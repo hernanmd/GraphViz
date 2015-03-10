@@ -1,0 +1,14 @@
+{
+	"category" : "GraphViz-Generators",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "Win32GraphVizGenerator",
+	"pools" : [
+		 ],
+	"super" : "FileBasedGraphVizGenerator",
+	"type" : "normal" }

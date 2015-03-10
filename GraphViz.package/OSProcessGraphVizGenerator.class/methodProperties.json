@@ -1,0 +1,11 @@
+{
+	"class" : {
+		 },
+	"instance" : {
+		"createMorph" : "dtl 3/15/2005 22:08",
+		"createXMLDocument" : "lr 9/4/2010 14:47",
+		"dotSourceWithLineFeedTerminators" : "dtl 3/25/2005 13:16",
+		"evaluateUsing:forType:" : "dtl 3/25/2005 13:17",
+		"externalCommand:" : "dtl 3/19/2005 09:03",
+		"generateType:" : "lr 9/4/2010 14:47",
+		"make:" : "lr 9/4/2010 14:47" } }

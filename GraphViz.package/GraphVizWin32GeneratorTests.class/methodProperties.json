@@ -1,0 +1,7 @@
+{
+	"class" : {
+		"isAbstract" : "hfm 3/13/2012 00:11" },
+	"instance" : {
+		"testCleanupAfterYourself" : "jrp 3/17/2005 20:35",
+		"testWaitForNewFile" : "HernanMoralesDurand 10/19/2014 20:03",
+		"testWaitForNewerFile" : "HernanMoralesDurand 10/19/2014 20:02" } }

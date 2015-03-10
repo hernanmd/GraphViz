@@ -1,0 +1,15 @@
+{
+	"category" : "GraphViz-Tests",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"graph",
+		"tempDir" ],
+	"name" : "GraphVizBaseTests",
+	"pools" : [
+		 ],
+	"super" : "TestCase",
+	"type" : "normal" }

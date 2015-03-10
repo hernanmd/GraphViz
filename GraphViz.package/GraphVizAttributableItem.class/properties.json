@@ -1,0 +1,15 @@
+{
+	"category" : "GraphViz-Model",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"attributes",
+		"inheritedStyle" ],
+	"name" : "GraphVizAttributableItem",
+	"pools" : [
+		 ],
+	"super" : "GraphVizItem",
+	"type" : "normal" }

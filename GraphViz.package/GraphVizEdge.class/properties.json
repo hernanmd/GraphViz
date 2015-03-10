@@ -1,0 +1,15 @@
+{
+	"category" : "GraphViz-Model",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"fromNode",
+		"toNode" ],
+	"name" : "GraphVizEdge",
+	"pools" : [
+		 ],
+	"super" : "GraphVizAttributableItem",
+	"type" : "normal" }

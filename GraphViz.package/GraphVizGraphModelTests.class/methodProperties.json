@@ -1,0 +1,24 @@
+{
+	"class" : {
+		 },
+	"instance" : {
+		"testAccessAllEdgesViaRootGraph" : "jrp 3/27/2005 22:14",
+		"testAccessAllNodesViaRootGraph" : "jrp 3/20/2005 16:37",
+		"testInheritedStyle" : "jrp 3/29/2005 17:10",
+		"testInheritedStyleCascadesThroughSubgraphs" : "jrp 3/29/2005 19:31",
+		"testInheritedStylesAreCumulative" : "jrp 3/29/2005 17:40",
+		"testInheritedStylesAreDistinctForNodesAndEdges" : "jrp 3/29/2005 18:35",
+		"testInheritedStylesMaintainedIfNodesPutIntoSubgraph" : "lr 9/4/2010 14:47",
+		"testLoopThroughAllEdges" : "lr 9/4/2010 14:47",
+		"testLoopThroughAllNodes" : "lr 9/4/2010 14:47",
+		"testModelContainsAttributes" : "jrp 3/11/2005 19:41",
+		"testModelContainsEdges" : "jrp 3/20/2005 16:00",
+		"testModelContainsManyNodesWhenUsingEdgesWithNestedAssociations" : "jrp 3/13/2005 19:10",
+		"testModelContainsNodes" : "jrp 3/20/2005 16:00",
+		"testModelContainsSubgraphs" : "jrp 3/27/2005 18:56",
+		"testModelRecordsOnlyUniqueNodes" : "lr 9/4/2010 14:47",
+		"testModelRecordsOnlyUniqueNodesEvenInSubgraphs" : "jrp 3/20/2005 17:09",
+		"testModelWithStyle" : "jrp 3/27/2005 18:56",
+		"testObjectsHaveAttributes" : "jrp 3/29/2005 17:11",
+		"testSubgraphInSubgraphs" : "jrp 3/29/2005 17:11",
+		"testSubgraphsVsGraphs" : "jrp 3/29/2005 17:10" } }

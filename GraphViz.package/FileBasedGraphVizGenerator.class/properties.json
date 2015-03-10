@@ -1,0 +1,15 @@
+{
+	"category" : "GraphViz-Generators",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"durationToWaitForGenerating",
+		"deleteIntermediateFiles" ],
+	"name" : "FileBasedGraphVizGenerator",
+	"pools" : [
+		 ],
+	"super" : "GraphVizGenerator",
+	"type" : "normal" }

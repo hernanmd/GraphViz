@@ -1,0 +1,21 @@
+{
+	"category" : "GraphViz-Model",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"directed",
+		"children",
+		"currentGraphReceiver",
+		"nodes",
+		"layoutSize",
+		"edges",
+		"currentNodeStyle",
+		"currentEdgeStyle" ],
+	"name" : "GraphVizGraph",
+	"pools" : [
+		 ],
+	"super" : "GraphVizItem",
+	"type" : "normal" }

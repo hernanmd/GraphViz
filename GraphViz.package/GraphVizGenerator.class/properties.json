@@ -1,0 +1,16 @@
+{
+	"category" : "GraphViz-Generators",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"outputPath",
+		"graph",
+		"preferredProgram" ],
+	"name" : "GraphVizGenerator",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

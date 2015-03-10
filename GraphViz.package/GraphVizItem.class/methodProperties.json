@@ -1,0 +1,22 @@
+{
+	"class" : {
+		 },
+	"instance" : {
+		"id" : "jrp 3/6/2005 21:12",
+		"id:" : "lr 9/4/2010 14:47",
+		"indent:on:" : "jrp 3/12/2005 19:43",
+		"isAttribute" : "jrp 3/11/2005 19:44",
+		"isEdge" : "jrp 3/6/2005 21:16",
+		"isGraph" : "jrp 3/8/2005 06:44",
+		"isNode" : "jrp 3/6/2005 21:17",
+		"isStyle" : "jrp 3/13/2005 15:34",
+		"isSubgraph" : "jrp 3/6/2005 23:15",
+		"nodeType" : "jrp 3/8/2005 07:01",
+		"printOn:" : "jrp 3/8/2005 07:00",
+		"safeId" : "jrp 3/11/2005 19:35",
+		"safeIdFor:" : "lr 9/4/2010 14:47",
+		"writeAttribute:value:on:" : "jrp 3/12/2005 20:01",
+		"writeContentsOn:withIndent:for:" : "jrp 3/13/2005 14:20",
+		"writeHeaderOn:withIndent:" : "jrp 3/13/2005 14:22",
+		"writeOn:withIndent:for:" : "jrp 3/13/2005 14:31",
+		"writeTerminatorOn:withIndent:" : "jrp 3/13/2005 14:28" } }

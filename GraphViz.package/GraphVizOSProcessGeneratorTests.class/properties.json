@@ -1,0 +1,14 @@
+{
+	"category" : "GraphViz-Tests",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "dtl 3/18/2005 22:46",
+	"instvars" : [
+		 ],
+	"name" : "GraphVizOSProcessGeneratorTests",
+	"pools" : [
+		 ],
+	"super" : "GraphVizBaseTests",
+	"type" : "normal" }

@@ -1,0 +1,16 @@
+{
+	"category" : "GraphViz",
+	"classinstvars" : [
+		"colorsByName" ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"generator",
+		"generatorClass",
+		"extent" ],
+	"name" : "GraphViz",
+	"pools" : [
+		 ],
+	"super" : "GraphVizGraph",
+	"type" : "normal" }
