@@ -1,10 +1,7 @@
 testing
 testAnonymousSubGraph
-
-	graph subgraphDo:
-		[graph add: #A].
-	
-	self should: [(graph dot lineNumber: 2) = '	{'].
-	self should: [(graph dot lineNumber: 3) = '		A;'].
-	self should: [(graph dot lineNumber: 4) = '	}'].
-	self should: [(graph dot lineNumber: 5) = '}'].
+	graph subgraphDo: [ graph add: #A ].
+	self assert: (graph dot lineNumber: 2) equals: '	{'.
+	self assert: (graph dot lineNumber: 3) equals: '		A;'.
+	self assert: (graph dot lineNumber: 4) equals: '	}'.
+	self assert: (graph dot lineNumber: 5) equals: '}'

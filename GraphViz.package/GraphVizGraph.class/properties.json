@@ -1,10 +1,10 @@
 {
-	"category" : "GraphViz-Model",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "",
+	"super" : "GraphVizItem",
+	"category" : "GraphViz-Model",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
 	"instvars" : [
 		"directed",
 		"children",
@@ -13,9 +13,8 @@
 		"layoutSize",
 		"edges",
 		"currentNodeStyle",
-		"currentEdgeStyle" ],
+		"currentEdgeStyle"
+	],
 	"name" : "GraphVizGraph",
-	"pools" : [
-		 ],
-	"super" : "GraphVizItem",
-	"type" : "normal" }
+	"type" : "normal"
+}

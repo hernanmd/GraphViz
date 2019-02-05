@@ -1,0 +1,25 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "GraphBuilder-Log",
+	"classinstvars" : [ ],
+	"pools" : [
+		"ChronologyConstants"
+	],
+	"classvars" : [
+		"ContinuationRegex",
+		"EntryRegex"
+	],
+	"instvars" : [
+		"timestamp",
+		"method",
+		"components",
+		"referee",
+		"type",
+		"fields",
+		"previousCC",
+		"currentCC"
+	],
+	"name" : "GBFlowEntry",
+	"type" : "normal"
+}

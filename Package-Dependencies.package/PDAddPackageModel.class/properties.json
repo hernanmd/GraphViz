@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "BaptisteQuide 7/22/2014 15:51",
+	"super" : "ComposableModel",
+	"category" : "Package-Dependencies-UI-Window",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"packageList",
+		"buttonAddPackage",
+		"packageAnalyzerTreeModel"
+	],
+	"name" : "PDAddPackageModel",
+	"type" : "normal"
+}

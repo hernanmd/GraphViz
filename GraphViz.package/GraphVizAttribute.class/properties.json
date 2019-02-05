@@ -1,14 +1,11 @@
 {
-	"category" : "GraphViz-Model",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "",
-	"instvars" : [
-		 ],
-	"name" : "GraphVizAttribute",
-	"pools" : [
-		 ],
 	"super" : "GraphVizItem",
-	"type" : "normal" }
+	"category" : "GraphViz-Model",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "GraphVizAttribute",
+	"type" : "normal"
+}

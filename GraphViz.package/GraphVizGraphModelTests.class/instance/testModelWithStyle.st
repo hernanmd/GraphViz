@@ -1,7 +1,5 @@
 testing
 testModelWithStyle
-
-	graph add: #node with: #color -> #blue.		
-	self should: [graph nodes isEmpty].
-	
-	self should: [graph styles size =1].
+	graph add: #node with: #color -> #blue.
+	self assert: graph nodes isEmpty.
+	self assert: graph styles size equals: 1

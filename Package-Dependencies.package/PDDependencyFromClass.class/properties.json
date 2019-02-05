@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "BaptisteQuide 7/31/2014 12:03",
+	"super" : "PDPackageDependency",
+	"category" : "Package-Dependencies-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"theClass"
+	],
+	"name" : "PDDependencyFromClass",
+	"type" : "normal"
+}

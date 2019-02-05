@@ -1,11 +1,8 @@
 testing
 testModelContainsEdges
-
 	graph add: #A -> #B.
-	
-	self should: [graph edges size = 1].
-	self should: [graph edges first id = (#A -> #B)].
-	
-	self should: [graph nodes size = 2].
-	self should: [graph nodes first id = #A].
-	self should: [graph nodes second id = #B].
+	self assert: graph edges size equals: 1.
+	self assert: graph edges first id equals: #A -> #B.
+	self assert: graph nodes size equals: 2.
+	self assert: graph nodes first id equals: #A.
+	self assert: graph nodes second id equals: #B

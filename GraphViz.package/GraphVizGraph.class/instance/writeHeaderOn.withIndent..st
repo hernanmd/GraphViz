@@ -1,10 +1,10 @@
 streaming
 writeHeaderOn: stream withIndent: aNumber
 
-	directed ifTrue: [stream nextPutAll: 'di'].
+	directed ifTrue: [ stream nextPutAll: 'di' ].
 	stream
 		nextPutAll: self nodeType;
-		nextPut: $ .
+		nextPut: Character space.
 		
-	self id ifNotNilDo: [:name | stream nextPutAll: self safeId; nextPut: $ ].
+	self id ifNotNil: [ : name | stream nextPutAll: self safeId; nextPut: $ ].
 	stream nextPutAll: '{'.

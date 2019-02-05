@@ -1,11 +1,11 @@
 testing
 testSafeIds
-
-	self should: [(graph safeIdFor: #A) = #A].
-	self should: [(graph safeIdFor: 10) = '10'].
-	self should: [(graph safeIdFor: '"10"') = '"10"'].
-	self should: [(graph safeIdFor: '<TABLE> </TABLE>') = '<TABLE> </TABLE>'].
-	
-	self should: [(graph safeIdFor: '10ABC') = '"10ABC"'].
-	self should: [(graph safeIdFor: 'ABC DEF') = '"ABC DEF"'].
-	self should: [(graph safeIdFor: 'ABC-DEF') = '"ABC-DEF"'].
+	self assert: (graph safeIdFor: #A) equals: #A.
+	self assert: (graph safeIdFor: 10) equals: '10'.
+	self assert: (graph safeIdFor: '"10"') equals: '"10"'.
+	self
+		assert: (graph safeIdFor: '<TABLE> </TABLE>')
+		equals: '<TABLE> </TABLE>'.
+	self assert: (graph safeIdFor: '10ABC') equals: '"10ABC"'.
+	self assert: (graph safeIdFor: 'ABC DEF') equals: '"ABC DEF"'.
+	self assert: (graph safeIdFor: 'ABC-DEF') equals: '"ABC-DEF"'

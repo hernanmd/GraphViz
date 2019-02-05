@@ -1,7 +1,0 @@
-{
-	"class" : {
-		"isAbstract" : "jrp 3/13/2005 23:35" },
-	"instance" : {
-		"historyOfSmalltalk" : "jrp 3/19/2005 19:22",
-		"setUp" : "HernanMoralesDurand 10/19/2014 22:59",
-		"tearDown" : "HernanMoralesDurand 10/19/2014 19:44" } }

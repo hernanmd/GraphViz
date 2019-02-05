@@ -1,14 +1,11 @@
 {
-	"category" : "GraphViz-Generators",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "",
-	"instvars" : [
-		 ],
-	"name" : "OSProcessGraphVizGenerator",
-	"pools" : [
-		 ],
 	"super" : "GraphVizGenerator",
-	"type" : "normal" }
+	"category" : "GraphViz-Generators",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "OSProcessGraphVizGenerator",
+	"type" : "normal"
+}

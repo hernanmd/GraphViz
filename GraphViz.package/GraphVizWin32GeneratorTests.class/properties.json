@@ -1,14 +1,11 @@
 {
-	"category" : "GraphViz-Tests",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "",
-	"instvars" : [
-		 ],
-	"name" : "GraphVizWin32GeneratorTests",
-	"pools" : [
-		 ],
 	"super" : "GraphVizBaseTests",
-	"type" : "normal" }
+	"category" : "GraphViz-Tests",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "GraphVizWin32GeneratorTests",
+	"type" : "normal"
+}

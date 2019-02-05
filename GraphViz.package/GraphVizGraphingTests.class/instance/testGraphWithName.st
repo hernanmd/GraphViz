@@ -1,6 +1,5 @@
 testing
 testGraphWithName
-
 	graph name: 'g'.
-	self should: [graph dot beginsWith: 'graph g {'].
-	self should: [graph dot last = $}]
+	self assert: (graph dot beginsWith: 'graph g {').
+	self assert: graph dot last = $}

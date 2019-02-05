@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "BaptisteQuide 7/28/2014 15:12",
+	"super" : "PDGraphVizGenerator",
+	"category" : "Package-Dependencies-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"packageCycle"
+	],
+	"name" : "PDPackageCycleGenerator",
+	"type" : "normal"
+}

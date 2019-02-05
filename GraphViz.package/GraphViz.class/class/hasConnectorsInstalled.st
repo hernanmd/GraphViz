@@ -1,4 +1,4 @@
 accessing
 hasConnectorsInstalled
 
-	^ PackageInfo allPackages anySatisfy: [:each | each externalName = #Connectors]
+	^ RPackageOrganizer default packages anySatisfy: [:each | each packageName = #Connectors]

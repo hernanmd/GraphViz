@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "BaptisteQuide 8/4/2014 10:47",
+	"super" : "PDPackageTreeModel",
+	"category" : "Package-Dependencies-UI-Window",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"relationGraph",
+		"packageLabel"
+	],
+	"name" : "PDPackageAnalyzerReverseTreeModel",
+	"type" : "normal"
+}

@@ -1,10 +1,8 @@
 testing
 testGraphToXml
-
 	graph add: #A.
 	graph add: #B -> #C.
-	
-	self 
-		should: [Smalltalk includesKey: #XMLDOMParser]
+	self
+		should: [ Smalltalk globals includesKey: #XMLDOMParser ]
 		description: 'Need YAXO package to run this test and use asXml feature of graphs'.
-	self should: [graph asXml topElement localName = #gxl]
+	self assert: graph asXml topElement localName equals: #gxl

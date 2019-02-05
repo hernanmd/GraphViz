@@ -1,0 +1,3 @@
+accessing
+usersOfPackageWithoutExtensionDependency
+	^ relationGraph usersOfWithoutExtensionDependency: pdPackage

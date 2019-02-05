@@ -1,14 +1,13 @@
 {
-	"category" : "GraphViz-Model",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "",
-	"instvars" : [
-		"parent" ],
-	"name" : "GraphVizSubgraph",
-	"pools" : [
-		 ],
 	"super" : "GraphVizGraph",
-	"type" : "normal" }
+	"category" : "GraphViz-Model",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"parent"
+	],
+	"name" : "GraphVizSubgraph",
+	"type" : "normal"
+}

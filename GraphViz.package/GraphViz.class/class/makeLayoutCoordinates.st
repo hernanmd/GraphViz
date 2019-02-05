@@ -1,4 +1,4 @@
-samples
+examples
 makeLayoutCoordinates
 	"Answer plain text layout coordinates in a format that could be parsed in Squeak."
 

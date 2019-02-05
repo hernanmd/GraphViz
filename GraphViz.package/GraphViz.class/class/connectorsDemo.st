@@ -1,4 +1,4 @@
-samples
+examples
 connectorsDemo
 
 	"GraphViz connectorsDemo"

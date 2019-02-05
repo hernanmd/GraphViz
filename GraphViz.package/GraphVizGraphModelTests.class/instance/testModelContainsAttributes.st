@@ -1,8 +1,6 @@
 testing
 testModelContainsAttributes
-
 	graph addAttribute: #A -> #B.
-	
-	self should: [graph attributes size = 1].
-	self should: [graph attributes first key = #A].
-	self should: [graph attributes first value = #B].
+	self assert: graph attributes size equals: 1.
+	self assert: graph attributes first key equals: #A.
+	self assert: graph attributes first value equals: #B

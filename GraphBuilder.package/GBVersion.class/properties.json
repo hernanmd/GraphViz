@@ -1,0 +1,17 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "GraphBuilder-Monticello",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"version",
+		"info",
+		"uid",
+		"ancestors",
+		"dependencies"
+	],
+	"name" : "GBVersion",
+	"type" : "normal"
+}

@@ -1,5 +1,4 @@
 testing
 testGraphWithOneNode
-
 	graph add: #A.
-	self should: [(graph dot lineNumber: 2) = '	A;'] 
+	self assert: (graph dot lineNumber: 2) = '	A;'

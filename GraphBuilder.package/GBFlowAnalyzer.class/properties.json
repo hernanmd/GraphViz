@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "GraphBuilder-Log",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"entries",
+		"graph",
+		"continuation"
+	],
+	"name" : "GBFlowAnalyzer",
+	"type" : "normal"
+}

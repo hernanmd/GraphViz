@@ -1,5 +1,7 @@
 creation
 createMorph
 
-	^  [(PNGReadWriter createAFormFrom: (self generateType: #png)) first asMorph] 
+	^  [
+		(PNGReadWriter formFromStream: (self generateType: #png)) first asMorph
+		] 
 		ensure: [self cleanUpIntermediateFilesAsAppropriate]

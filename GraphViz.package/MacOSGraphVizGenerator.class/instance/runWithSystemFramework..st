@@ -1,3 +1,4 @@
 external calls
 runWithSystemFramework: string
-	^ self externalCallFailed 
+	"^ self externalCallFailed"
+	^ NBMacShell run: string.

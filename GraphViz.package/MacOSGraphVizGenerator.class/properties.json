@@ -1,14 +1,11 @@
 {
-	"category" : "GraphViz-Generators",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "",
-	"instvars" : [
-		 ],
-	"name" : "MacOSGraphVizGenerator",
-	"pools" : [
-		 ],
 	"super" : "FileBasedGraphVizGenerator",
-	"type" : "normal" }
+	"category" : "GraphViz-Generators",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "MacOSGraphVizGenerator",
+	"type" : "normal"
+}

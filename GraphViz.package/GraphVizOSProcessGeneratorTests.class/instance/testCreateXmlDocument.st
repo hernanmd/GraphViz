@@ -4,6 +4,6 @@ testCreateXmlDocument
 	XMLDOMParser is present in the image."
 
 	| gv xml |
-	gv := self historyOfSmalltalk.
+	gv := self exampleHistoryOfSmalltalk.
 	xml := gv asXml.
 	self assert: ('*</graph>*</gxl>*' match: (xml asString last: 20))

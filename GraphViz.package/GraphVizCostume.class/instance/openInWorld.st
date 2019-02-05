@@ -1,5 +1,6 @@
 displaying
 openInWorld
+	" Requires Connectors package "
 
 	| graphHeight pasteUp scrollPane window desiredExtent |
 	graph doLayout.
@@ -15,7 +16,9 @@ openInWorld
 	graph allNodesDo:
 		[:each | | costume |
 		
-		costume  := each shape = #box ifTrue: [NCTextRectangleMorph new] ifFalse: [NCEllipseMorph new].
+		costume  := each shape = #box 
+			ifTrue: [ (Smalltalk at: #NCTextRectangleMorph) new] 
+			ifFalse: [ (Smalltalk at: #NCEllipseMorph) new ].
 		costume color: Color white.
 		self nodes at: each put: costume.
 	
@@ -30,7 +33,7 @@ openInWorld
 
 	graph allEdgesDo:
 		[:each | | connector |
-		connector := NCAAConnectorMorph 
+		connector := (Smalltalk at: #NCAAConnectorMorph)
 			fromMorph: (self nodes at: each fromNode)
 			toMorph: (self nodes at: each toNode).
 			

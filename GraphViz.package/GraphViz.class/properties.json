@@ -1,16 +1,17 @@
 {
+	"commentStamp" : "HernanMoralesDurand 5/22/2016 02:28",
+	"super" : "GraphVizGraph",
 	"category" : "GraphViz",
 	"classinstvars" : [
-		"colorsByName" ],
-	"classvars" : [
-		 ],
-	"commentStamp" : "",
+		"colorsByName"
+	],
+	"pools" : [ ],
+	"classvars" : [ ],
 	"instvars" : [
 		"generator",
 		"generatorClass",
-		"extent" ],
+		"extent"
+	],
 	"name" : "GraphViz",
-	"pools" : [
-		 ],
-	"super" : "GraphVizGraph",
-	"type" : "normal" }
+	"type" : "normal"
+}

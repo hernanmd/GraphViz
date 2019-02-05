@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "BaptisteQuide 7/25/2014 15:16",
+	"super" : "PDClassNode",
+	"category" : "Package-Dependencies-UI-Node",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"package"
+	],
+	"name" : "PDClassToDependencyNode",
+	"type" : "normal"
+}

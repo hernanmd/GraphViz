@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "BaptisteQuide 8/7/2014 18:26",
+	"super" : "ComposableModel",
+	"category" : "Package-Dependencies-UI-Window",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"treeDiff",
+		"packageRelationGraphDiff"
+	],
+	"name" : "PDPackageAnalyzerDiffTreeModel",
+	"type" : "normal"
+}

@@ -3,7 +3,7 @@ testMakeDotFile
 
 	| gv fileName fs |
 
-	gv := self historyOfSmalltalk.
+	gv := self exampleHistoryOfSmalltalk.
 	fileName := gv generator outputFileNameFor: #plain.
 	fileName asFileReference ensureDelete.
 	gv make: #plain.

@@ -1,11 +1,8 @@
 testing
 testModelContainsNodes
-
 	graph add: #A.
-		
-	self should: [graph nodes size = 1].
-	self should: [graph nodes first id = #A].
-	
+	self assert: graph nodes size equals: 1.
+	self assert: graph nodes first id equals: #A.
 	graph add: #B.
-	self should: [graph nodes size = 2].
-	self should: [graph nodes second id = #B].
+	self assert: graph nodes size = 2.
+	self assert: graph nodes second id equals: #B

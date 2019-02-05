@@ -1,0 +1,17 @@
+{
+	"commentStamp" : "BaptisteQuide 7/11/2014 14:26",
+	"super" : "Object",
+	"category" : "Package-Dependencies-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"relation",
+		"sccs",
+		"cycles",
+		"visitedNodes",
+		"queue"
+	],
+	"name" : "PDPackageCycleDetector",
+	"type" : "normal"
+}

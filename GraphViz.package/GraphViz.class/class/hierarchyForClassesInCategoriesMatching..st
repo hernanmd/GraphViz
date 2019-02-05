@@ -1,4 +1,4 @@
-samples
+examples
 hierarchyForClassesInCategoriesMatching: symbol
 	" GraphViz hierarchyForClassesInCategoriesMatching: 'GraphViz' "
 	" GraphViz hierarchyForClassesInCategoriesMatching: 'System-Archives' "

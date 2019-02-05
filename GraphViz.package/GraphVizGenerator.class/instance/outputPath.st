@@ -1,5 +1,6 @@
 accessing
 outputPath
+	" Answer a <String> specifying the current output path "
 
 	^ outputPath 
-		ifNil: [ (FileSystem workingDirectory / 'dot') fullName ]
+		ifNil: [ outputPath := (FileSystem workingDirectory / 'dot') fullName ]

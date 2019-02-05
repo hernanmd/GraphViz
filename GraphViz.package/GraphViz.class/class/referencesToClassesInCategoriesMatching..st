@@ -1,9 +1,9 @@
-samples
+examples
 referencesToClassesInCategoriesMatching: symbol
 
 	"  GraphViz referencesToClassesInCategoriesMatching: 'GraphViz'  "
 	"  GraphViz referencesToClassesInCategoriesMatching: 'System-Archives'  "
-	"  GraphViz referencesToClassesInCategoriesMatching: 'Collections-Weak'  "
+	"  GraphViz referencesToClassesInCategoriesMatching: 'Collections-Sequenceable'  "
 	"  GraphViz referencesToClassesInCategoriesMatching: #DynamicBindings  "
 			
 	| graph edges |
@@ -19,7 +19,7 @@ referencesToClassesInCategoriesMatching: symbol
 		(SystemOrganization listAtCategoryNamed: cat) do:
 			[: klass | 
 				graph add: klass with: {#fillcolor -> #palegreen}.
-				(Smalltalk at: klass) allCallsOn do: [:each | edges add: klass -> each classSymbol]]].
+				(Smalltalk at: klass) allCallsOn do: [:each | edges add: klass -> each className]]].
 
 		edges do: [:each | graph add: each].
 

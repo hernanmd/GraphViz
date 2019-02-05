@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "BaptisteQuide 8/7/2014 12:15",
+	"super" : "PDAbstractItemDiff",
+	"category" : "Package-Dependencies-Diff",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"parent"
+	],
+	"name" : "PDDependentPackageItemDiff",
+	"type" : "normal"
+}

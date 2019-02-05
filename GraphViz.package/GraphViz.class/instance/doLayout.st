@@ -2,7 +2,7 @@ layout
 doLayout
 
 	| layout graphHeight graphWidth |
-	layout := self asLayoutCoordinates.
+	layout := self asLayoutCoordinates reject: #isEmpty.
 	
 	graphWidth := (layout first third asNumber * self class pointsPerInch) asNumber rounded.
 	graphHeight := (layout first fourth asNumber * self class pointsPerInch) asNumber rounded.

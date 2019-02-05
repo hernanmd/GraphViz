@@ -4,6 +4,9 @@ modificationTimeOf: aString
 
 	| answer |
 
-	answer := aString asFileReference ifNotNilDo: [ : entry | entry modificationTime ].
+	answer := aString asFileReference ifNotNilDo: [ : entry | 
+		[ entry modificationTime ]
+		on: FileDoesNotExist 
+		do: [ : ex | nil ] ].
 	(answer isKindOf: DateAndTime) ifTrue: [ ^ answer ].
 	^ nil.

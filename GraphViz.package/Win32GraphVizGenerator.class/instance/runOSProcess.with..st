@@ -2,8 +2,8 @@ external
 runOSProcess: command with: arguments
 	" Private - GraphViz should be present in the PATH environment variable "
 	
-	NBWin32Shell
-		shellExecute: NBWin32Window getForegroundWindow
+	WinShell 
+		shellExecute: WinWindow foregroundWindow
 		operation: 'open'
 		file: command
 		parameters: arguments

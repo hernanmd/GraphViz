@@ -1,6 +1,5 @@
 testing
 testSimplestDirectedGraph
-
 	graph beDirected.
-	self should: [graph dot beginsWith: 'digraph {'].
-	self should: [graph dot last = $}]
+	self assert: (graph dot beginsWith: 'digraph {').
+	self assert: graph dot last = $}

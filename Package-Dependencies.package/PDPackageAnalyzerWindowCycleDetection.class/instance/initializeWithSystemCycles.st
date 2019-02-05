@@ -1,0 +1,3 @@
+initialization-filter
+initializeWithSystemCycles
+	packageAnalyzerTreeModel := PDPackageCycleDetectionTreeModel system.

@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "BaptisteQuide 7/21/2014 14:35",
+	"super" : "Object",
+	"category" : "Package-Dependencies-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"packages",
+		"classToPackage"
+	],
+	"name" : "PDPackageRelationGraph",
+	"type" : "normal"
+}

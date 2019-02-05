@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "BaptisteQuide 8/3/2014 13:37",
+	"super" : "PDAbstractPackageNode",
+	"category" : "Package-Dependencies-UI-Node",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "PDReverseDependentPackageNode",
+	"type" : "normal"
+}

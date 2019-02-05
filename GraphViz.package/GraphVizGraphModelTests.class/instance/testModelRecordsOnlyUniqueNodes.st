@@ -1,12 +1,9 @@
 testing
 testModelRecordsOnlyUniqueNodes
-
 	| newNode |
 	graph add: #A.
-		
-	self should: [graph nodes size = 1].
-	self should: [graph nodes first id = #A].
-	
+	self assert: graph nodes size equals: 1.
+	self assert: graph nodes first id equals: #A.
 	newNode := graph add: #A.
-	self should: [graph nodes size = 1].
-	self should: [newNode = (graph nodeNamed: #A)]
+	self assert: graph nodes size = 1.
+	self assert: newNode equals: (graph nodeNamed: #A)

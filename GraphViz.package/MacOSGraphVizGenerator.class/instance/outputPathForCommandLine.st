@@ -10,4 +10,4 @@ outputPathForCommandLine
 		with: '\ '.
 	(path endsWith: '/') ifFalse: [path := path, '/'].
 	
-	^ '/Volumes/', path
+	^ path
