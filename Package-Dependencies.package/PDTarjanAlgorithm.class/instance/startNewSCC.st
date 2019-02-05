@@ -1,3 +1,0 @@
-private
-startNewSCC
-	^ PDPackageRelationGraph new

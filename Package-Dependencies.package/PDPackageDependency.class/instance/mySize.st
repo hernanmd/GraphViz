@@ -1,3 +1,0 @@
-accessing
-mySize
-	^ 1

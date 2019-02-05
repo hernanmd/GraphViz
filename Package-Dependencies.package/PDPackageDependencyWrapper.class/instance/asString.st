@@ -1,3 +1,0 @@
-accessing
-asString
-	^ self packageName

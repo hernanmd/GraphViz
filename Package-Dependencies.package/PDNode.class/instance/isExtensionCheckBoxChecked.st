@@ -1,3 +1,0 @@
-accessing
-isExtensionCheckBoxChecked
-	^ self rootNode treeModelParent extensionCheckBox state

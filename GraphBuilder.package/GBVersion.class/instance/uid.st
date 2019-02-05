@@ -1,3 +1,0 @@
-accessing
-uid
-	^uid

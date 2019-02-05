@@ -1,4 +1,0 @@
-initialization
-initializeWithRelationGraph: aRelationGraph
-	packageAnalyzerTreeModel := PDPackageAnalyzerReverseTreeModel onRelationGraph: aRelationGraph.
-	self buildandAddAllMorph 

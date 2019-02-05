@@ -1,3 +1,0 @@
-Usage example
-
-GBAncestryBuilder select.
