@@ -75,5 +75,6 @@ MacOSGraphVizGenerator >> runOSProcess: command with: arguments [
 { #category : #'external calls' }
 MacOSGraphVizGenerator >> runWithSystemFramework: string [
 	"^ self externalCallFailed"
-	^ NBMacShell run: string.
+
+	^ (Smalltalk globals at: #MacShell) run: string.
 ]

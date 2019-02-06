@@ -58,7 +58,7 @@ GraphVizGraphingTests >> testGraphWithGraphAttribute [
 GraphVizGraphingTests >> testGraphWithName [
 	graph name: 'g'.
 	self assert: (graph dot beginsWith: 'graph g {').
-	self assert: graph dot last = $}
+	self assert: graph dot last equals: $}
 ]
 
 { #category : #testing }
@@ -76,7 +76,7 @@ GraphVizGraphingTests >> testGraphWithOneEdge [
 { #category : #testing }
 GraphVizGraphingTests >> testGraphWithOneNode [
 	graph add: #A.
-	self assert: (graph dot lineNumber: 2) = '	A;'
+	self assert: (graph dot lineNumber: 2) equals: '	A;'
 ]
 
 { #category : #testing }

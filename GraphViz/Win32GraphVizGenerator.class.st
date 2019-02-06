@@ -4,6 +4,17 @@ Class {
 	#category : #'GraphViz-Generators'
 }
 
+{ #category : #external }
+Win32GraphVizGenerator >> buildCommand: command with: arguments [
+
+	^ String streamContents: [ : stream |
+		stream
+			nextPutAll: command;
+			space;
+			nextPutAll: arguments ]
+
+]
+
 { #category : #accessing }
 Win32GraphVizGenerator >> commandLineForFormat: outputFormat [
 
@@ -74,24 +85,9 @@ Win32GraphVizGenerator >> openInBrowser [
 Win32GraphVizGenerator >> runOSProcess: command with: arguments [
 	" Private - GraphViz should be present in the PATH environment variable "
 	
-	WinShell 
-		shellExecute: WinWindow foregroundWindow
-		operation: 'open'
-		file: command
-		parameters: arguments
-		directory: self outputPath
-		show: 0
-]
+	^ ProcessWrapper new
+		startWithShellCommand: (self buildCommand: command with: arguments);
+		upToEnd	
 
-{ #category : #external }
-Win32GraphVizGenerator >> shellExecute: lpOperation file: lpFile parameters: lpParameters directory: lpDirectory show: nShowCmd [	
-	
-	^self ffiCall: #( 
-			FFIConstantHandle ShellExecuteA(
-     				0,
-     				String* lpOperation,
-         			String* lpFile,
-     				String* lpParameters,
-     				String* lpDirectory,
-        			int nShowCmd)) module: #shell32
+
 ]

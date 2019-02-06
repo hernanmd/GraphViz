@@ -75,7 +75,7 @@ FileBasedGraphVizGenerator >> doWithStopWatch: aBlock modificationTime: original
 	[ stopwatch duration < duration ]
 		whileTrue: [ 
 			(self modificationTimeOf: file)
-				ifNotNilDo: [ :latestModTime | 
+				ifNotNil: [ :latestModTime | 
 					"if file is openable for writing then probably the external process is done"
 					"file did not exist before and now exists"
 					^ self
@@ -156,9 +156,9 @@ FileBasedGraphVizGenerator >> modificationTimeOf: aString [
 
 	| answer |
 
-	answer := aString asFileReference ifNotNilDo: [ : entry | 
+	answer := aString asFileReference ifNotNil: [ : entry | 
 		[ entry modificationTime ]
-		on: FileDoesNotExist 
+		on: FileDoesNotExistException 
 		do: [ : ex | nil ] ].
 	(answer isKindOf: DateAndTime) ifTrue: [ ^ answer ].
 	^ nil.

@@ -31,9 +31,10 @@ GraphVizWin32GeneratorTests >> testWaitForNewFile [
 				waitingNoMoreThan: 1 second ]
 		raise: Error.
 	generator
-		do: [ (FileStream forceNewFileNamed: testFile)
-				nextPut: $.;
-				close ]
+		do: [ 
+			testFile asFileReference 
+				ensureDelete;
+				writeStreamDo: [ : stream | stream nextPut: $. ] ]
 		blockUntilFileUpdated: testFile
 		waitingNoMoreThan: 1 second
 ]
@@ -43,7 +44,7 @@ GraphVizWin32GeneratorTests >> testWaitForNewerFile [
 	| generator testFile |
 	generator := Win32GraphVizGenerator new.
 	testFile := (tempDir / 'testFile') fullName.
-	(FileStream forceNewFileNamed: testFile) close.
+	testFile asFileReference ensureDelete.
 	self
 		should: [ generator
 				do: nil
@@ -51,9 +52,10 @@ GraphVizWin32GeneratorTests >> testWaitForNewerFile [
 				waitingNoMoreThan: 1 second ]
 		raise: Error.
 	generator
-		do: [ (FileStream forceNewFileNamed: testFile)
-				nextPut: $.;
-				close ]
+		do: [ 
+			testFile asFileReference 
+				ensureDelete;
+				writeStreamDo: [ : stream | stream nextPut: $. ] ]
 		blockUntilFileUpdated: testFile
 		waitingNoMoreThan: 1 second
 ]
