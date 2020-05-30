@@ -148,6 +148,14 @@ BaselineOfGraphViz >> baselineTestsGroup: spec [
 ]
 
 { #category : #baselines }
+BaselineOfGraphViz >> customProjectAttributes [
+
+	OSPlatform current isMacOS ifTrue: [ ^ #(#MacOS) ].
+	OSPlatform current isUnix ifTrue: [ ^ #(#Unix) ].
+	OSPlatform current isWindows ifTrue: [ ^ #(#Windows) ]
+]
+
+{ #category : #baselines }
 BaselineOfGraphViz >> specForOsSubprocess: spec [
 
 	spec 
