@@ -56,7 +56,7 @@ BaselineOfGraphViz >> baselineExamplesGroup: spec [
 
 	spec
 		group: 'Examples'
-		with: #('GraphViz' 'GraphVizExamples')
+		with: #('GraphViz' 'GraphViz-Examples')
 ]
 
 { #category : #'baseline-groups' }
