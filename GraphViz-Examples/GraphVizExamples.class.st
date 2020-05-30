@@ -1,13 +1,17 @@
-Extension { #name : #GraphViz }
+Class {
+	#name : #GraphVizExamples,
+	#superclass : #Object,
+	#category : #'GraphViz-Examples'
+}
 
 { #category : #'*GraphViz-Examples' }
-GraphViz class >> createAllOutputFiles [
+GraphVizExamples class >> createAllOutputFiles [
 	"Generate all the output formats listed in GraphViz documentation (as of dot version 2.2).
 	Results are files named 'directedGraphSample.*' in the 'dot' folder."
 
 	"GraphViz createAllOutputFiles"
 
-	self new
+	GraphViz new
 		beDirected;
 		name: #directedGraphSample;
 		add: #graph with: {#ratio -> '0.5'};
@@ -22,14 +26,14 @@ GraphViz class >> createAllOutputFiles [
 ]
 
 { #category : #'*GraphViz-Examples' }
-GraphViz class >> createAllOutputFormats [
+GraphVizExamples class >> createAllOutputFormats [
 	"Generate all the output formats listed in GraphViz documentation (as of dot version 2.2)."
 
 	"GraphViz createAllOutputFormats"
 
 	| d viz |
 	d := Dictionary new.
-	viz := self new
+	viz := GraphViz new
 		beDirected;
 		name: #directedGraphSample1;
 		add: #graph with: {#ratio -> '0.5'};
@@ -39,16 +43,16 @@ GraphViz class >> createAllOutputFormats [
 		add: 'C++' -> #Java;
 		add: #Java -> 'C#';
 		yourself.
-	self outputFormats do: [:t | d at: t put: (viz asOutputType: t)].
+	GraphViz outputFormats do: [:t | d at: t put: (viz asOutputType: t)].
 	^ d
 ]
 
 { #category : #'*GraphViz-Examples' }
-GraphViz class >> directedGraphSample [
+GraphVizExamples class >> directedGraphSample [
 
 	"GraphViz directedGraphSample"
 	| graph |
-	graph := self new.
+	graph := GraphViz new.
 
 	graph beDirected.
 	graph
@@ -72,13 +76,13 @@ GraphViz class >> directedGraphSample [
 ]
 
 { #category : #'*GraphViz-Examples' }
-GraphViz class >> exampleCreateAllOutputFiles [
+GraphVizExamples class >> exampleCreateAllOutputFiles [
 	"
 	Generate all the output formats listed in GraphViz documentation (as of dot version 2.2).
 	Results are files named 'directedGraphSample.*' in the 'dot' folder.
 	"
 
-	self new
+	GraphViz new
 		beDirected;
 		name: #exampleDirectedGraph;
 		add: #graph with: {#ratio -> '0.5'};
@@ -93,12 +97,12 @@ GraphViz class >> exampleCreateAllOutputFiles [
 ]
 
 { #category : #'*GraphViz-Examples' }
-GraphViz class >> exampleCreateAllOutputFormats [
+GraphVizExamples class >> exampleCreateAllOutputFormats [
 	"Generate all the output formats listed in GraphViz documentation (as of dot version 2.2)."
 
 	| d viz |
 	d := Dictionary new.
-	viz := self new
+	viz := GraphViz new
 		beDirected;
 		name: #directedGraphSample1;
 		add: #graph with: {#ratio -> '0.5'};
@@ -108,17 +112,17 @@ GraphViz class >> exampleCreateAllOutputFormats [
 		add: 'C++' -> #Java;
 		add: #Java -> 'C#';
 		yourself.
-	self outputFormats do: [:t | d at: t put: (viz asOutputType: t)].
+	GraphViz outputFormats do: [:t | d at: t put: (viz asOutputType: t)].
 	^ d
 ]
 
 { #category : #'*GraphViz-Examples' }
-GraphViz class >> exampleDirectedGraph [
+GraphVizExamples class >> exampleDirectedGraph [
 	" 
 	GraphViz exampleDirectedGraph 
 	"
 	| graph |
-	graph := self new.
+	graph := GraphViz new.
 
 	graph beDirected.
 	graph
@@ -142,10 +146,10 @@ GraphViz class >> exampleDirectedGraph [
 ]
 
 { #category : #'*GraphViz-Examples' }
-GraphViz class >> exampleHistoryOfSmalltalk [
+GraphVizExamples class >> exampleHistoryOfSmalltalk [
 
 	| graph |
-	graph := self new.
+	graph := GraphViz new.
 	graph
 		beDirected;
 		name: 'HistoryOfSmalltalk';
@@ -191,13 +195,13 @@ GraphViz class >> exampleHistoryOfSmalltalk [
 ]
 
 { #category : #'*GraphViz-Examples' }
-GraphViz class >> exampleUndirectedGraph [
+GraphVizExamples class >> exampleUndirectedGraph [
 	"
 	GraphViz exampleUndirectedGraph 
 	"
 	
 	| graph |
-	graph := self new.
+	graph := GraphViz new.
 	graph
 		name: #undirectedGraphSample;
 		add: #graph with: #start -> #rand;
@@ -217,20 +221,20 @@ GraphViz class >> exampleUndirectedGraph [
 ]
 
 { #category : #'*GraphViz-Examples' }
-GraphViz class >> exampleUsersOfCollections [
+GraphVizExamples class >> exampleUsersOfCollections [
 
-	self usersOf: #Bag.
-	self usersOf: #WeakRegistry.
+	GraphViz usersOf: #Bag.
+	GraphViz usersOf: #WeakRegistry.
 
 
 ]
 
 { #category : #'*GraphViz-Examples' }
-GraphViz class >> historyOfSmalltalk [
-
+GraphVizExamples class >> historyOfSmalltalk [
 	"GraphViz historyOfSmalltalk"
+
 	| graph |
-	graph := self new.
+	graph := GraphViz new.
 	
 	graph
 		beDirected;
@@ -269,12 +273,12 @@ GraphViz class >> historyOfSmalltalk [
 ]
 
 { #category : #'*GraphViz-Examples' }
-GraphViz class >> makeLayoutCoordinates [
+GraphVizExamples class >> makeLayoutCoordinates [
 	"Answer plain text layout coordinates in a format that could be parsed in Squeak."
 
 	"GraphViz makeLayoutCoordinates explore"
 
-	^ self new
+	^ GraphViz new
 		beDirected;
 		name: #directedGraphSample1;
 		add: #graph with: {#ratio -> '0.5'};
@@ -288,11 +292,11 @@ GraphViz class >> makeLayoutCoordinates [
 ]
 
 { #category : #'*GraphViz-Examples' }
-GraphViz class >> undirectedGraphSample [
+GraphVizExamples class >> undirectedGraphSample [
 
 	"GraphViz undirectedGraphSample"
 	| graph |
-	graph := self new.
+	graph := GraphViz new.
 
 	graph
 		name: #undirectedGraphSample;
