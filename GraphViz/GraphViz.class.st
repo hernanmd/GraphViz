@@ -1248,8 +1248,7 @@ GraphViz >> asXml [
 GraphViz >> doLayout [
 
 	| layout graphHeight graphWidth |
-	
-	self halt.
+
 	layout := self asLayoutCoordinates reject: #isEmpty.
 	
 	graphWidth := (layout first third asNumber * self class pointsPerInch) asNumber rounded.

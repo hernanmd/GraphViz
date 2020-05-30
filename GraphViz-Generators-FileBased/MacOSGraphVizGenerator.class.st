@@ -1,7 +1,7 @@
 Class {
 	#name : #MacOSGraphVizGenerator,
 	#superclass : #FileBasedGraphVizGenerator,
-	#category : #'GraphViz-Generators'
+	#category : #'GraphViz-Generators-FileBased'
 }
 
 { #category : #accessing }

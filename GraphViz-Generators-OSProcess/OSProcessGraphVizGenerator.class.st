@@ -1,7 +1,7 @@
 Class {
 	#name : #OSProcessGraphVizGenerator,
 	#superclass : #GraphVizGenerator,
-	#category : #'GraphViz-Generators'
+	#category : #'GraphViz-Generators-OSProcess'
 }
 
 { #category : #converting }

@@ -1,18 +1,8 @@
 Class {
 	#name : #OSSubProcessGraphVizGenerator,
 	#superclass : #GraphVizGenerator,
-	#category : #'GraphViz-Generators'
+	#category : #'GraphViz-Generators-OSSubProcess'
 }
-
-{ #category : #private }
-OSSubProcessGraphVizGenerator >> buildCommandFor: aString [ 
-
-	^ String streamContents: [ : stream |
-			stream
-				nextPutAll: self preferredProgram;
-				space;
-				nextPutAll: (self commandLineForFormat: aString) ]
-]
 
 { #category : #private }
 OSSubProcessGraphVizGenerator >> buildType: aString [ 
@@ -42,10 +32,10 @@ OSSubProcessGraphVizGenerator >> commandLineForFormat: outputFormat [
 OSSubProcessGraphVizGenerator >> createMorph [
 	"builds and returns a morph"
 
-	^ (PNGReadWriter formFromStream: (self generateType: #png)) asMorph
+	^ (PNGReadWriter formFromStream: (self generateType: #png) asByteArray readStream) asMorph
 ]
 
-{ #category : #converting }
+{ #category : #creation }
 OSSubProcessGraphVizGenerator >> createXMLDocument [
 	"builds and returns an XMLDocument"
 	"Warning: Some versions of the dot2gxl program do not correctly flush 
@@ -53,23 +43,7 @@ OSSubProcessGraphVizGenerator >> createXMLDocument [
 	data appearing to have been truncated. If this happens, install a new
 	version of the GraphViz package on your system."
 
-	| dot2gxlProcess xml parser |
-	
-	self halt.
-	dot2gxlProcess := self externalCommand: 'dot2gxl'.
-	[xml := dot2gxlProcess
-		nextPutAll: (self generateType: #dot);
-		close;
-		output]
-			on: Error
-			do: [self notify: dot2gxlProcess errorPipelineContents.
-				^ xml ifNil: ['']].
-	dot2gxlProcess succeeded ifFalse:
-		[self notify: dot2gxlProcess errorPipelineContents].
-	parser := Smalltalk at: #XMLDOMParser ifAbsent: [].
-	^ parser
-		ifNil: [xml]
-		ifNotNil: [parser parseDocumentFrom: xml readStream]
+	^ XMLDOMParser parse: (self evaluateUsing: 'dot2gxl' forGxl: #dot) readStream
 ]
 
 { #category : #generating }
@@ -77,6 +51,37 @@ OSSubProcessGraphVizGenerator >> dotSourceWithLineFeedTerminators [
 	"The external programs expect <lf> line terminators on Unix systems"
 
 	^ self graph dot copyReplaceAll: String cr with: String lf
+]
+
+{ #category : #generating }
+OSSubProcessGraphVizGenerator >> evaluateUsing: externalProgram forGxl: outputFormat [
+	" Run external program (i.e. dot, neato, fdp, twopi) and produce the requested output type.
+	See the documentation for dot for a list of supported output types. No external files are produced. Answer the result output String ."
+
+	| process actualStdout actualStderr exitedSemaphore |
+	
+	exitedSemaphore := Semaphore new.
+	process := OSSUnixSubprocess new
+		command: externalProgram;
+		arguments: { '-g' };
+		redirectStdout;
+		redirectStderr;
+		redirectStdin;
+		yourself.
+	[ process
+		runAndWaitPollingEvery: (Delay forMilliseconds: 50)
+		retrievingStreams: true
+		onExitDo: [ :p :stdout :stderr | 
+			actualStdout := stdout.
+			actualStderr := stderr.
+			exitedSemaphore signal ] ] forkAt: Processor activeProcess priority + 1.
+	process stdinStream 
+		nextPutAll: self dotSourceWithLineFeedTerminators;
+		close.
+	process waitForExit.
+	process closeAndCleanStreams.
+	exitedSemaphore wait.
+	^ actualStdout 
 ]
 
 { #category : #generating }
@@ -98,7 +103,7 @@ OSSubProcessGraphVizGenerator >> evaluateUsing: externalProgram forType: outputF
 		runAndWaitPollingEvery: (Delay forMilliseconds: 50)
 		retrievingStreams: true
 		onExitDo: [ :p :stdout :stderr | 
-			actualStdout := stdout asByteArray readStream.
+			actualStdout := stdout.
 			actualStderr := stderr.
 			exitedSemaphore signal ] ] forkAt: Processor activeProcess priority + 1.
 	process stdinStream 
@@ -108,14 +113,6 @@ OSSubProcessGraphVizGenerator >> evaluateUsing: externalProgram forType: outputF
 	process closeAndCleanStreams.
 	exitedSemaphore wait.
 	^ actualStdout 
-]
-
-{ #category : #generating }
-OSSubProcessGraphVizGenerator >> externalCommand: commandString [
-	" Evaluate commandString using the receiver's context "
-
-	self halt.
-	^ OSSUnixSubprocess resultOfCommand: commandString
 ]
 
 { #category : #generating }
@@ -148,7 +145,7 @@ OSSubProcessGraphVizGenerator >> makeNoWait: outputFormat [
 
 	self writeDotFile.
 	self outputFileNameFor: outputFormat.
-	self externalCommand: (self buildCommandFor: outputFormat)
+	self evaluateUsing: self preferredProgram forType: outputFormat.
 ]
 
 { #category : #generating }
