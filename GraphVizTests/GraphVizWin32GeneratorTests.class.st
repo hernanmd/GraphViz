@@ -1,7 +1,7 @@
 Class {
 	#name : #GraphVizWin32GeneratorTests,
 	#superclass : #GraphVizBaseTests,
-	#category : #'GraphViz-Tests'
+	#category : #GraphVizTests
 }
 
 { #category : #'as yet unclassified' }

@@ -8,7 +8,7 @@ These tests should pass if and only if:
 Class {
 	#name : #GraphVizOSProcessGeneratorTests,
 	#superclass : #GraphVizBaseTests,
-	#category : 'GraphViz-Tests'
+	#category : #GraphVizTests
 }
 
 { #category : #'as yet unclassified' }

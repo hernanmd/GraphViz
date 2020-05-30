@@ -48,8 +48,12 @@ GraphVizGenerator >> dotExtension [
 
 { #category : #accessing }
 GraphVizGenerator >> dotFileName [
+	" Answer a <String> representing the .dot file name to be used "
 
-	^ self baseFileName, self dotExtension
+	^ String streamContents: [ : stream |
+			stream
+				nextPutAll: self baseFileName;
+				nextPutAll: self dotExtension ]
 ]
 
 { #category : #generating }

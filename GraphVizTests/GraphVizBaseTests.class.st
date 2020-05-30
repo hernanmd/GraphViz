@@ -5,7 +5,7 @@ Class {
 		'graph',
 		'tempDir'
 	],
-	#category : #'GraphViz-Tests'
+	#category : #GraphVizTests
 }
 
 { #category : #'as yet unclassified' }

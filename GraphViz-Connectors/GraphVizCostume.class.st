@@ -11,9 +11,8 @@ Class {
 
 { #category : #releasing }
 GraphVizCostume >> deleteAll [
-
-	self nodes values do: [:each | each delete].
-	self edges do: [:each | each delete].
+	self nodes valuesDo: [ :each | each delete ].
+	self edges do: [ :each | each delete ]
 ]
 
 { #category : #accessing }

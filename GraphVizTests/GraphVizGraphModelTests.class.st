@@ -1,7 +1,7 @@
 Class {
 	#name : #GraphVizGraphModelTests,
 	#superclass : #GraphVizBaseTests,
-	#category : #'GraphViz-Tests'
+	#category : #GraphVizTests
 }
 
 { #category : #testing }
