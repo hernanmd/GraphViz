@@ -113,9 +113,9 @@ BaselineOfGraphViz >> baselinePackages: spec [
 		package: 'GraphViz' 									with: [ spec requires: #('XMLParser'). ];
 		package: 'GraphBuilder' 								with: [ spec requires: #('GraphViz' ) ];
 		package: 'GraphViz-Generators'						with: [ spec requires: #('GraphViz' ) ];
-		package: 'GraphViz-Generator-OSSubProcess' 		with: [ spec requires: #('GraphViz-Generators') ];
-		package: 'GraphViz-Generator-FileBased'			with: [ spec requires: #('GraphViz-Generators' ) ];
-		package: 'GraphViz-Generator-OSProcess' 		with: [ spec requires: #('GraphViz-Generator-FileBased' ) ];
+		package: 'GraphViz-Generators-OSSubProcess' 		with: [ spec requires: #('GraphViz-Generators') ];
+		package: 'GraphViz-Generators-FileBased'			with: [ spec requires: #('GraphViz-Generators' ) ];
+		package: 'GraphViz-Generators-OSProcess' 		with: [ spec requires: #('GraphViz-Generator-FileBased' ) ];
 		package: 'GraphViz-Tests' 							with: [ spec requires: #('GraphViz-Generators' ) ];
 		package: 'GraphBuilder' 								with: [ spec requires: #('GraphViz' ) ];
 		package: 'Package-Dependencies' 					with: [ spec requires: #('GraphViz' ) ].
