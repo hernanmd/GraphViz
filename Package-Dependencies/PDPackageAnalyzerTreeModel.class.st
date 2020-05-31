@@ -17,7 +17,8 @@ Class {
 		'buttonReverseAnalysis',
 		'buttonSave',
 		'buttonMakeDiff',
-		'relationGraph'
+		'relationGraph',
+		'buttonChecker'
 	],
 	#category : #'Package-Dependencies-UI-Window'
 }

@@ -86,14 +86,14 @@ BaselineOfGraphViz >> baselineOSDeps: spec [
 	spec
 		for: #(Unix MacOS)
 		do: [
-			self specForOsSubprocess: spec.
-			spec package: 'GraphViz-Generators-OSSubProcess' with: [ spec requires: #('OSSubprocess') ] ].
+			self specForOSUnixSubprocess: spec.
+			spec package: 'GraphViz-Generators-OSUnixSubprocess' with: [ spec requires: #('OSSubprocess') ] ].
 
 	spec
 		for: #Windows
 		do: [ 
-			self specForProcessWrapper: spec.
-			spec package: 'GraphViz-Generators-FileBased' with: [ spec requires: #('ProcessWrapper') ] ].
+			self specForOSWindowsSubprocess: spec.
+			spec package: 'GraphViz-Generators-OSWinSubprocess' with: [ spec requires: #('OSWinSubprocess') ] ].
 ]
 
 { #category : #'baseline-groups' }
@@ -110,16 +110,17 @@ BaselineOfGraphViz >> baselinePackageDependenciesGroup: spec [
 BaselineOfGraphViz >> baselinePackages: spec [
 
 	spec 
-		package: 'GraphViz' 									with: [ spec requires: #('XMLParser'). ];
-		package: 'GraphBuilder' 								with: [ spec requires: #('GraphViz' ) ];
-		package: 'GraphViz-Generators'						with: [ spec requires: #('GraphViz' ) ];
-		package: 'GraphViz-Generators-OSSubProcess' 		with: [ spec requires: #('GraphViz-Generators') ];
+		package: 'GraphViz' 										with: [ spec requires: #('XMLParser'). ];
+		package: 'GraphBuilder' 									with: [ spec requires: #('GraphViz' ) ];
+		package: 'GraphViz-Generators'							with: [ spec requires: #('GraphViz' ) ];
+		package: 'GraphViz-Generators-OSUnixSubprocess' 	with: [ spec requires: #('GraphViz-Generators') ];
+		package: 'GraphViz-Generators-OSWinSubprocess' 	with: [ spec requires: #('GraphViz-Generators') ];
 		package: 'GraphViz-Generators-FileBased'			with: [ spec requires: #('GraphViz-Generators' ) ];
-		package: 'GraphViz-Generators-OSProcess' 		with: [ spec requires: #('GraphViz-Generators-FileBased' ) ];
-		package: 'GraphViz-Examples'						with: [ spec requires: #('GraphViz' ) ];
-		package: 'GraphViz-Tests' 							with: [ spec requires: #('GraphViz-Generators' ) ];
-		package: 'GraphBuilder' 								with: [ spec requires: #('GraphViz' ) ];
-		package: 'Package-Dependencies' 					with: [ spec requires: #('GraphViz' ) ].
+		package: 'GraphViz-Generators-OSProcess' 			with: [ spec requires: #('GraphViz-Generators-FileBased' ) ];
+		package: 'GraphViz-Examples'							with: [ spec requires: #('GraphViz' ) ];
+		package: 'GraphViz-Tests' 								with: [ spec requires: #('GraphViz-Generators' ) ];
+		package: 'GraphBuilder' 									with: [ spec requires: #('GraphViz' ) ];
+		package: 'Package-Dependencies'	 					with: [ spec requires: #('GraphViz' ) ].
 ]
 
 { #category : #baselines }
@@ -134,7 +135,7 @@ BaselineOfGraphViz >> baselinePharo: spec [
 	spec for: #'pharo8.x' do: [ 
 		self specForXMLParserPharo8: spec.
 		spec 
-			package: 'GraphViz'	with: [ spec includes: #('GraphViz-Generators-OSSubProcess') ];
+			package: 'GraphViz'	with: [ spec includes: #('GraphViz-Generators-OSUnixSubprocess' 'GraphViz-Generators-OSWinSubprocess') ];
 			group: 'Basic' 			with: #('GraphViz') ].
 
 ]
@@ -156,11 +157,19 @@ BaselineOfGraphViz >> customProjectAttributes [
 ]
 
 { #category : #baselines }
-BaselineOfGraphViz >> specForOsSubprocess: spec [
+BaselineOfGraphViz >> specForOSUnixSubprocess: spec [
 
 	spec 
 		baseline: 'OSSubprocess' 
 		with: [ spec repository: 'github://pharo-contributions/OSSubprocess:master/repository' ]
+]
+
+{ #category : #baselines }
+BaselineOfGraphViz >> specForOSWindowsSubprocess: spec [
+
+	spec 
+		baseline: 'OSWinSubprocess' 
+		with: [ spec repository: 'github://pharo-contributions/OSWinSubprocess/src' ]
 ]
 
 { #category : #baselines }

@@ -14,7 +14,7 @@ Class {
 		'packages',
 		'classToPackage'
 	],
-	#category : 'Package-Dependencies-Core'
+	#category : #'Package-Dependencies-Core'
 }
 
 { #category : #'instance creation' }
@@ -193,10 +193,10 @@ PDPackageRelationGraph >> combineDependencies [
 { #category : #private }
 PDPackageRelationGraph >> combineDependencies: aPackage [
 	| grouped composite |
-	grouped := aPackage dependencies
-		groupBy: [ :each | each target ]
-		having: [ :each | true ].
 	
+	grouped := aPackage dependencies
+		groupedBy: [ :each | each target ]
+		having: [ :each | true ].
 	aPackage clearDependencies.
 	
 	grouped keysAndValuesDo: [ :target :dependencies |
@@ -234,25 +234,23 @@ PDPackageRelationGraph >> dependenciesFrom: aPackage [
 
 { #category : #adding }
 PDPackageRelationGraph >> findReferencesIn: aMethod for: aPackage [
-	| package compiledMethod |
+	| package |
 
-	compiledMethod := aMethod compiledMethod.
-	^ compiledMethod
-		ifNotNil: [ 
-			compiledMethod literals allButLast
-				do: [ :literal | 
-					(self isReference: literal)
-						ifTrue: [ 
-							package := self packageForBehavior: literal value.
-							self addPackage: package.
-							aPackage
-								add:
-									((PDReferenceDependency from: aPackage to: package)
-										theClass: aMethod actualClass;
-										selector: aMethod method selector asSymbol;
-										reference: literal value;
-										method: aMethod;
-										yourself) ] ] ]
+	aMethod compiledMethod ifNotNil: [ : compiledMethod | 
+		compiledMethod literals ifNotEmpty: [ : cmLiterals | 
+			cmLiterals allButLast do: [ :literal | 
+				(self isReference: literal)
+					ifTrue: [ 
+						package := self packageForBehavior: literal value.
+						self addPackage: package.
+						aPackage
+							add:
+								((PDReferenceDependency from: aPackage to: package)
+									theClass: aMethod actualClass;
+									selector: aMethod method selector asSymbol;
+									reference: literal value;
+									method: aMethod;
+									yourself) ] ] ] ]
 ]
 
 { #category : #accessing }
