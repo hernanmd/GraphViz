@@ -87,13 +87,17 @@ BaselineOfGraphViz >> baselineOSDeps: spec [
 		for: #(Unix MacOS)
 		do: [
 			self specForOSUnixSubprocess: spec.
-			spec package: 'GraphViz-Generators-OSUnixSubprocess' with: [ spec requires: #('OSSubprocess') ] ].
+			spec 
+				package: 'GraphViz-Generators-OSUnixSubprocess' with: [ spec requires: #('OSSubprocess') ];
+				package: 'GraphViz'	with: [ spec includes: #('GraphViz-Generators-OSUnixSubprocess') ] ].
 
 	spec
 		for: #Windows
 		do: [ 
-			self specForOSWindowsSubprocess: spec.
-			spec package: 'GraphViz-Generators-OSWinSubprocess' with: [ spec requires: #('OSWinSubprocess') ] ].
+			self specForOSWinSubprocess: spec.
+			spec 
+				package: 'GraphViz-Generators-OSWinSubprocess' with: [ spec requires: #('OSWinSubprocess') ];
+				package: 'GraphViz' with: [ spec includes: #(''GraphViz-Generators-OSWinSubprocess'') ] ].
 ]
 
 { #category : #'baseline-groups' }
@@ -135,7 +139,6 @@ BaselineOfGraphViz >> baselinePharo: spec [
 	spec for: #'pharo8.x' do: [ 
 		self specForXMLParserPharo8: spec.
 		spec 
-			package: 'GraphViz'	with: [ spec includes: #('GraphViz-Generators-OSUnixSubprocess' 'GraphViz-Generators-OSWinSubprocess') ];
 			group: 'Basic' 			with: #('GraphViz') ].
 
 ]
@@ -165,7 +168,7 @@ BaselineOfGraphViz >> specForOSUnixSubprocess: spec [
 ]
 
 { #category : #baselines }
-BaselineOfGraphViz >> specForOSWindowsSubprocess: spec [
+BaselineOfGraphViz >> specForOSWinSubprocess: spec [
 
 	spec 
 		baseline: 'OSWinSubprocess' 
