@@ -1,11 +1,11 @@
 Class {
-	#name : #OSSubProcessGraphVizGenerator,
+	#name : #OSSubprocessGVGenerator,
 	#superclass : #GraphVizGenerator,
-	#category : #'GraphViz-Generators-OSUnixSubprocess'
+	#category : #'GraphViz-Generators'
 }
 
 { #category : #private }
-OSSubProcessGraphVizGenerator >> buildType: aString [ 
+OSSubprocessGVGenerator >> buildType: aString [ 
 
 	^ String streamContents: [ : stream |
 			stream
@@ -14,7 +14,7 @@ OSSubProcessGraphVizGenerator >> buildType: aString [
 ]
 
 { #category : #generating }
-OSSubProcessGraphVizGenerator >> commandLineForFormat: outputFormat [
+OSSubprocessGVGenerator >> commandLineForFormat: outputFormat [
 
 	| file |
 	file := self outputCommandLineFileNameFor: outputFormat.
@@ -29,14 +29,14 @@ OSSubProcessGraphVizGenerator >> commandLineForFormat: outputFormat [
 ]
 
 { #category : #converting }
-OSSubProcessGraphVizGenerator >> createMorph [
+OSSubprocessGVGenerator >> createMorph [
 	"builds and returns a morph"
 
 	^ (PNGReadWriter formFromStream: (self generateType: #png) asByteArray readStream) asMorph
 ]
 
 { #category : #creation }
-OSSubProcessGraphVizGenerator >> createXMLDocument [
+OSSubprocessGVGenerator >> createXMLDocument [
 	"builds and returns an XMLDocument"
 	"Warning: Some versions of the dot2gxl program do not correctly flush 
 	output to a pipe or file. This method will fail in that case, with the XML 
@@ -47,23 +47,23 @@ OSSubProcessGraphVizGenerator >> createXMLDocument [
 ]
 
 { #category : #generating }
-OSSubProcessGraphVizGenerator >> dotSourceWithLineFeedTerminators [
+OSSubprocessGVGenerator >> dotSourceWithLineFeedTerminators [
 	"The external programs expect <lf> line terminators on Unix systems"
 
 	^ self graph dot copyReplaceAll: String cr with: String lf
 ]
 
 { #category : #generating }
-OSSubProcessGraphVizGenerator >> evaluateUsing: externalProgram forGxl: outputFormat [
+OSSubprocessGVGenerator >> evaluateUsing: externalProgram arguments: args [
 	" Run external program (i.e. dot, neato, fdp, twopi) and produce the requested output type.
 	See the documentation for dot for a list of supported output types. No external files are produced. Answer the result output String ."
 
 	| process actualStdout actualStderr exitedSemaphore |
 	
 	exitedSemaphore := Semaphore new.
-	process := OSSUnixSubprocess new
+	process := self subprocessClass new
 		command: externalProgram;
-		arguments: { '-g' };
+		arguments: args;
 		redirectStdout;
 		redirectStderr;
 		redirectStdin;
@@ -85,38 +85,23 @@ OSSubProcessGraphVizGenerator >> evaluateUsing: externalProgram forGxl: outputFo
 ]
 
 { #category : #generating }
-OSSubProcessGraphVizGenerator >> evaluateUsing: externalProgram forType: outputFormat [
+OSSubprocessGVGenerator >> evaluateUsing: externalProgram forGxl: outputFormat [
 	" Run external program (i.e. dot, neato, fdp, twopi) and produce the requested output type.
 	See the documentation for dot for a list of supported output types. No external files are produced. Answer the result output String ."
 
-	| process actualStdout actualStderr exitedSemaphore |
-	
-	exitedSemaphore := Semaphore new.
-	process := OSSUnixSubprocess new
-		command: externalProgram;
-		arguments: { self buildType: outputFormat };
-		redirectStdout;
-		redirectStderr;
-		redirectStdin;
-		yourself.
-	[ process
-		runAndWaitPollingEvery: (Delay forMilliseconds: 50)
-		retrievingStreams: true
-		onExitDo: [ :p :stdout :stderr | 
-			actualStdout := stdout.
-			actualStderr := stderr.
-			exitedSemaphore signal ] ] forkAt: Processor activeProcess priority + 1.
-	process stdinStream 
-		nextPutAll: self dotSourceWithLineFeedTerminators;
-		close.
-	process waitForExit.
-	process closeAndCleanStreams.
-	exitedSemaphore wait.
-	^ actualStdout 
+	^ self evaluateUsing: externalProgram arguments: { '-g' }.
 ]
 
 { #category : #generating }
-OSSubProcessGraphVizGenerator >> generateType: outputTypeString [
+OSSubprocessGVGenerator >> evaluateUsing: externalProgram forType: outputFormat [
+	" Run external program (i.e. dot, neato, fdp, twopi) and produce the requested output type.
+	See the documentation for dot for a list of supported output types. No external files are produced. Answer the result output String ."
+
+	^ self evaluateUsing: externalProgram arguments: { self buildType: outputFormat }
+]
+
+{ #category : #generating }
+OSSubprocessGVGenerator >> generateType: outputTypeString [
 	" Run dot and produce the requested output type. See the documentation for dot for a list of supported output types. No external files are produced."
 
 	^ self
@@ -127,7 +112,7 @@ OSSubProcessGraphVizGenerator >> generateType: outputTypeString [
 ]
 
 { #category : #generating }
-OSSubProcessGraphVizGenerator >> make: outputFormat [
+OSSubprocessGVGenerator >> make: outputFormat [
 	"makes the requested output format on disk and returns full filename to output file 
 	e.g. write a SVG output file and returns full path to the output file"
 
@@ -141,7 +126,7 @@ OSSubProcessGraphVizGenerator >> make: outputFormat [
 ]
 
 { #category : #generating }
-OSSubProcessGraphVizGenerator >> makeNoWait: outputFormat [
+OSSubprocessGVGenerator >> makeNoWait: outputFormat [
 
 	self writeDotFile.
 	self outputFileNameFor: outputFormat.
@@ -149,7 +134,7 @@ OSSubProcessGraphVizGenerator >> makeNoWait: outputFormat [
 ]
 
 { #category : #generating }
-OSSubProcessGraphVizGenerator >> outputCommandLineFileNameFor: extension [
+OSSubprocessGVGenerator >> outputCommandLineFileNameFor: extension [
 
 	^ String streamContents: [ : stream | 
 			stream
@@ -161,7 +146,7 @@ OSSubProcessGraphVizGenerator >> outputCommandLineFileNameFor: extension [
 ]
 
 { #category : #generating }
-OSSubProcessGraphVizGenerator >> outputPathForCommandLine [
+OSSubprocessGVGenerator >> outputPathForCommandLine [
 
 	| path |
 	path := self outputPath copyReplaceAll: ':' with: '/'.
@@ -172,7 +157,13 @@ OSSubProcessGraphVizGenerator >> outputPathForCommandLine [
 ]
 
 { #category : #generating }
-OSSubProcessGraphVizGenerator >> writeDotFileNamed: aString [
+OSSubprocessGVGenerator >> subprocessClass [
+
+	self subclassResponsibility
+]
+
+{ #category : #generating }
+OSSubprocessGVGenerator >> writeDotFileNamed: aString [
 
 	| fileName |
 	fileName := aString.

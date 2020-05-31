@@ -691,12 +691,6 @@ yellowgreen;#9acd32'.
 	colorsByName]
 ]
 
-{ #category : #accessing }
-GraphViz class >> defaultGeneratorClass [
-
-	^ OSSubProcessGraphVizGenerator
-]
-
 { #category : #examples }
 GraphViz class >> hierarchyForClassesInCategoriesMatching: symbol [
 	" GraphViz hierarchyForClassesInCategoriesMatching: 'GraphViz' "
