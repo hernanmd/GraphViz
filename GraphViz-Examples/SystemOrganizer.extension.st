@@ -1,6 +1,6 @@
 Extension { #name : #SystemOrganizer }
 
-{ #category : #'*GraphViz' }
+{ #category : #'*GraphViz-Examples' }
 SystemOrganizer >> graphForCategoriesMatching: matchingString [
 	" This method depends on HierarchyBrowser which is NOT included supported anymore in Pharo 3.0. It is maintained only for API usage example "
 
