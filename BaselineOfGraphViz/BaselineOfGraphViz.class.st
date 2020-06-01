@@ -47,8 +47,8 @@ BaselineOfGraphViz >> baselineCoreGroup: spec [
 		group: 'Core' 
 		with: #(
 			'Basic'
-			'GraphViz'
-			'GraphViz-Generators')
+			'GraphViz-Generators-OSSubprocess'
+			'GraphViz-Generators-OSWinSubprocess')
 ]
 
 { #category : #'baseline-groups' }
@@ -56,7 +56,9 @@ BaselineOfGraphViz >> baselineExamplesGroup: spec [
 
 	spec
 		group: 'Examples'
-		with: #('GraphViz' 'GraphViz-Examples')
+		with: #(
+			'Core' 
+			'GraphViz-Examples')
 ]
 
 { #category : #'baseline-groups' }
@@ -64,7 +66,9 @@ BaselineOfGraphViz >> baselineGraphBuilderGroup: spec [
 
 	spec
 		group: 'Builder'
-		with: #('GraphViz' 'GraphBuilder')
+		with: #(
+			'Core' 
+			'GraphBuilder')
 ]
 
 { #category : #'baseline-groups' }
