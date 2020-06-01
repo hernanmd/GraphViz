@@ -88,14 +88,16 @@ BaselineOfGraphViz >> baselineOSDeps: spec [
 		do: [
 			self specForOSUnixSubprocess: spec.
 			spec 
-				package: 'GraphViz'	with: [ spec requires: #('OSSubprocess') ] ].
+				package: 'GraphViz'	with: [ spec requires: #('OSSubprocess') ] ;
+				package: 'GraphViz-Generators-OSUnixSubprocess' 	with: [ spec requires: #('OSSubprocess') ] ].
 
 	spec
 		for: #Windows
 		do: [ 
 			self specForOSWinSubprocess: spec.
 			spec 
-				package: 'GraphViz' with: [ spec requires: #('OSWinSubprocess') ] ].
+				package: 'GraphViz' with: [ spec requires: #('OSWinSubprocess') ];
+				package: 'GraphViz-Generators-OSUnixSubprocess' 	with: [ spec requires: #('OSWinSubprocess') ] ].
 ]
 
 { #category : #'baseline-groups' }
