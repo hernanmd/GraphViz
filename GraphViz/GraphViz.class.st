@@ -691,13 +691,6 @@ yellowgreen;#9acd32'.
 	colorsByName]
 ]
 
-{ #category : #accessing }
-GraphViz class >> defaultGeneratorClass [
-	^ OSPlatform current isWindows
-		ifTrue: [ self class environment at: #OSWSWinProcess ]
-		ifFalse: [ self class environment at: #OSSUnixSubprocess ]
-]
-
 { #category : #examples }
 GraphViz class >> hierarchyForClassesInCategoriesMatching: symbol [
 	" GraphViz hierarchyForClassesInCategoriesMatching: 'GraphViz' "

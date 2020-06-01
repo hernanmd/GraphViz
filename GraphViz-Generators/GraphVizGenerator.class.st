@@ -9,13 +9,12 @@ Class {
 	#category : #'GraphViz-Generators'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #'instance creation' }
 GraphVizGenerator class >> newFor: aGraphViz [
 
 	| generator |
 	generator := self new.
 	generator graph: aGraphViz.
-	
 	^ generator
 ]
 
