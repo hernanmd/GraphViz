@@ -159,7 +159,9 @@ OSSubprocessGVGenerator >> outputPathForCommandLine [
 { #category : #generating }
 OSSubprocessGVGenerator >> subprocessClass [
 
-	^ GraphViz defaultGeneratorClass
+	^ OSPlatform current isWindows
+		ifTrue: [ self class environment at: #OSWSWinProcess ]
+		ifFalse: [ self class environment at: #OSUnixSubprocess ]
 ]
 
 { #category : #generating }
