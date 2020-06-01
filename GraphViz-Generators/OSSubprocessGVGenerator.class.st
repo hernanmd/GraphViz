@@ -161,7 +161,7 @@ OSSubprocessGVGenerator >> subprocessClass [
 
 	^ OSPlatform current isWindows
 		ifTrue: [ self class environment at: #OSWSWinProcess ]
-		ifFalse: [ self class environment at: #OSUnixSubprocess ]
+		ifFalse: [ self class environment at: #OSSUnixSubprocess ]
 ]
 
 { #category : #generating }
