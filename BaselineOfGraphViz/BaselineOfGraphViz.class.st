@@ -47,7 +47,7 @@ BaselineOfGraphViz >> baselineCoreGroup: spec [
 		group: 'Core' 
 		with: #(
 			'Basic'
-			'GraphViz-Generators-OSSubprocess'
+			'GraphViz-Generators-OSUnixSubprocess'
 			'GraphViz-Generators-OSWinSubprocess')
 ]
 
