@@ -159,7 +159,7 @@ OSSubprocessGVGenerator >> outputPathForCommandLine [
 { #category : #generating }
 OSSubprocessGVGenerator >> subprocessClass [
 
-	self subclassResponsibility
+	^ GraphViz defaultGeneratorClass
 ]
 
 { #category : #generating }

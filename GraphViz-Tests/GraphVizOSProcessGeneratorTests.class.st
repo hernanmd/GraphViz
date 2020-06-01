@@ -14,9 +14,7 @@ Class {
 { #category : #'as yet unclassified' }
 GraphVizOSProcessGeneratorTests class >> isAbstract [
 
-	^ [GraphViz defaultGeneratorClass ~= OSProcessGraphVizGenerator]
-		on: Warning
-		do: [^ true]
+	^ true
 
 ]
 

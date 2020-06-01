@@ -693,10 +693,9 @@ yellowgreen;#9acd32'.
 
 { #category : #accessing }
 GraphViz class >> defaultGeneratorClass [
-
-	^ OSPlatform default isWindows
-		ifTrue: [ OSWinSubprocessGraphVizGenerator ]
-		ifFalse: [ OSUnixSubprocessGraphVizGenerator ]
+	^ OSPlatform current isWindows
+		ifTrue: [ self class environment at: #OSWSWinProcess ]
+		ifFalse: [ self class environment at: #OSSUnixSubprocess ]
 ]
 
 { #category : #examples }
