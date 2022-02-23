@@ -7,7 +7,6 @@
 - [Description](#description)
 - [Installation](#installation)
 - [Examples](#examples)
-- [Implementation notes](#implementation-note)
 - [License](#license)
 
 # Description
