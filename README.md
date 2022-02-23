@@ -4,7 +4,7 @@
 
 # Description
 
-This is a Pharo Smalltalk GraphViz binding. It is a port to Pharo >= 6 of the work found in the Lukas Renggli repository. Note that if you are using Roassal engine, you can also with GraphViz layouts using [a specialized package for this](https://github.com/peteruhnak/graphviz-layout).
+This is a Pharo Smalltalk GraphViz binding. It is a port to Pharo >= 6 of the work found in the Lukas Renggli [repository](http://source.lukas-renggli.ch/). Note that if you are using Roassal engine, you can also with GraphViz layouts using [a specialized package for this](https://github.com/peteruhnak/graphviz-layout).
 
 # Installation
 
