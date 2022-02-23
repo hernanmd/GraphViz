@@ -8,7 +8,8 @@ This is a Pharo Smalltalk GraphViz binding. It is a port to Pharo >= 6 of the wo
 
 # Installation
 
-There are several ways to install the **GraphViz** package:
+Make sure you have installed the [graphviz binaries](https://graphviz.org/) in your system.
+There are several ways to install the **GraphViz** package in Pharo:
 
 ## Core version
 
@@ -46,4 +47,12 @@ GraphViz exampleUndirectedGraph
 ```
 
 ![UsersOfWeakRegistry](https://user-images.githubusercontent.com/4825959/155387908-b8e933a3-1bbb-4dc5-b082-ff66e28f0beb.png)
+
+
+
+
+
+![FamiliesOfSmalltalk](https://user-images.githubusercontent.com/4825959/155390651-1ba889f3-f32a-41f1-9ff1-c4de6d865b45.svg)
+
+
 
