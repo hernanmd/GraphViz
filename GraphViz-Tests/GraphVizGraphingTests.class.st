@@ -33,13 +33,13 @@ GraphVizGraphingTests >> testGraphToXml [
 	self
 		should: [ Smalltalk globals includesKey: #XMLDOMParser ]
 		description: 'Need YAXO package to run this test and use asXml feature of graphs'.
-	self assert: graph asXml topElement localName equals: #gxl
+	self assert: graph asXml firstNode localName equals: #gxl
 ]
 
 { #category : #testing }
 GraphVizGraphingTests >> testGraphWithDoubleQuotedId [
 	graph add: 'HI THERE'.
-	self assert: (graph dot lineNumber: 2) = '	"HI THERE";'
+	self assert: (graph dot lineNumber: 2) equals: '	"HI THERE";'
 ]
 
 { #category : #testing }
@@ -82,7 +82,7 @@ GraphVizGraphingTests >> testGraphWithOneNode [
 { #category : #testing }
 GraphVizGraphingTests >> testGraphWithSimpleAttribute [
 	graph at: #label put: #title.
-	self assert: (graph dot lineNumber: 2) = '	label=title;'
+	self assert: (graph dot lineNumber: 2) equals: '	label=title;'
 ]
 
 { #category : #testing }
@@ -145,13 +145,13 @@ GraphVizGraphingTests >> testSafeIds [
 GraphVizGraphingTests >> testSimplestDirectedGraph [
 	graph beDirected.
 	self assert: (graph dot beginsWith: 'digraph {').
-	self assert: graph dot last = $}
+	self assert: graph dot last equals: $}
 ]
 
 { #category : #testing }
 GraphVizGraphingTests >> testSimplestGraph [
 	self assert: (graph dot beginsWith: 'graph {').
-	self should: [ graph dot last = $} ]
+	self assert: graph dot last equals: $}
 ]
 
 { #category : #testing }

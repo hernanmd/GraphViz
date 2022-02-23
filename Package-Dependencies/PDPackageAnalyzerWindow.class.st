@@ -13,7 +13,7 @@ Class {
 		'nautilus',
 		'nautilusUI'
 	],
-	#category : 'Package-Dependencies-UI-Window'
+	#category : #'Package-Dependencies-UI-Window'
 }
 
 { #category : #'instance-creation' }
@@ -37,12 +37,12 @@ PDPackageAnalyzerWindow class >> systemPackages [
 
 { #category : #adding }
 PDPackageAnalyzerWindow >> addAllMorph [
-	| windowNautilus  windowTreeModel |
-	windowNautilus := self buildWindowNautilus.	
+	|  windowTreeModel |
+
 	windowTreeModel := self buildMorphWindowForTreeModel.
 	packageAnalyzerTreeModel packageTreeNautilusUI: self nautilusUI.
 	self
-		addMorph: windowNautilus frame: (0.4 @ 0 corner: 1 @ 1);
+		addMorph: nautilus frame: (0.4 @ 0 corner: 1 @ 1);
 		addMorph:  (self panelMorphFrom: windowTreeModel) frame: (0 @ 0 corner: 0.4 @ 1);
 		yourself.
 ]
@@ -56,18 +56,6 @@ PDPackageAnalyzerWindow >> buildMorphWindowForTreeModel [
 	
 	specWindow := self specWindowFrom: packageAnalyzerTreeModel.
 	^ specWindow
-]
-
-{ #category : #building }
-PDPackageAnalyzerWindow >> buildWindowNautilus [
-	| windowNautilus |
-	nautilusUI := NautilusUI on: nautilus.
-	windowNautilus := NautilusWindow new model: nautilusUI.
-	nautilusUI addAll: windowNautilus.
-	nautilusUI window: windowNautilus.
-	nautilusUI changed: #sourceCodeFrom:.
-	nautilusUI setWindowTitle.
-	^ windowNautilus
 ]
 
 { #category : #'initialization-filter' }

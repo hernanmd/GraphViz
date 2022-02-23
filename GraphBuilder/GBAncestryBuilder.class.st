@@ -12,7 +12,7 @@ Class {
 		'graph',
 		'versions'
 	],
-	#category : 'GraphBuilder-Monticello'
+	#category : #'GraphBuilder-Monticello'
 }
 
 { #category : #'instance creation' }
@@ -67,12 +67,12 @@ GBAncestryBuilder >> buildEdges: aCollection [
 				version setAncestors: Set new.
 				version info ancestors do: [ :ancestor |
 					(versions like: (GBVersion info: ancestor))
-						ifNotNilDo: [ :each | version ancestors add: each ] ].
+						ifNotNil: [ :each | version ancestors add: each ] ].
 				version setDependencies: Set new.
-				version version ifNotNilDo: [ :ver |
+				version version ifNotNil: [ :ver |
 					ver dependencies do: [ :dependency |
 						(versions like: (GBVersion info: dependency versionInfo))
-							ifNotNilDo: [ :each | version dependencies add: each ] ] ] ]
+							ifNotNil: [ :each | version dependencies add: each ] ] ] ]
 		displayingProgress: 'Building Edges'.
 ]
 

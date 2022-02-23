@@ -9,13 +9,12 @@ Class {
 	#category : #'GraphViz-Generators'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #'instance creation' }
 GraphVizGenerator class >> newFor: aGraphViz [
 
 	| generator |
 	generator := self new.
 	generator graph: aGraphViz.
-	
 	^ generator
 ]
 
@@ -48,8 +47,12 @@ GraphVizGenerator >> dotExtension [
 
 { #category : #accessing }
 GraphVizGenerator >> dotFileName [
+	" Answer a <String> representing the .dot file name to be used "
 
-	^ self baseFileName, self dotExtension
+	^ String streamContents: [ : stream |
+			stream
+				nextPutAll: self baseFileName;
+				nextPutAll: self dotExtension ]
 ]
 
 { #category : #generating }

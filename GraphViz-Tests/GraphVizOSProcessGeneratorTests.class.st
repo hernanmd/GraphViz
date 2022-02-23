@@ -8,15 +8,13 @@ These tests should pass if and only if:
 Class {
 	#name : #GraphVizOSProcessGeneratorTests,
 	#superclass : #GraphVizBaseTests,
-	#category : 'GraphViz-Tests'
+	#category : #'GraphViz-Tests'
 }
 
 { #category : #'as yet unclassified' }
 GraphVizOSProcessGeneratorTests class >> isAbstract [
 
-	^ [GraphViz defaultGeneratorClass ~= OSProcessGraphVizGenerator]
-		on: Warning
-		do: [^ true]
+	^ true
 
 ]
 

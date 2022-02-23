@@ -1,7 +1,11 @@
+"
+Uses PipeableOSProcess to run GraphViz commands
+
+"
 Class {
 	#name : #OSProcessGraphVizGenerator,
 	#superclass : #GraphVizGenerator,
-	#category : #'GraphViz-Generators'
+	#category : #'GraphViz-Generators-OSProcess'
 }
 
 { #category : #converting }

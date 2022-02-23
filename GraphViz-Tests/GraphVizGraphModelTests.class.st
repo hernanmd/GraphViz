@@ -60,7 +60,7 @@ GraphVizGraphModelTests >> testInheritedStylesAreCumulative [
 	graph add: #node with: #shape -> #box.
 	graph add: #B -> #C.
 	self assert: (graph nodeNamed: #A) color equals: #blue.
-	self assert: (graph nodeNamed: #B) color = #blue.
+	self assert: (graph nodeNamed: #B) color equals: #blue.
 	self assert: (graph nodeNamed: #B) shape equals: #box.
 	self assert: (graph nodeNamed: #C) color equals: #blue.
 	self assert: (graph nodeNamed: #C) shape equals: #box
@@ -73,7 +73,7 @@ GraphVizGraphModelTests >> testInheritedStylesAreDistinctForNodesAndEdges [
 	graph add: #A.
 	graph add: #A -> #B.
 	self assert: (graph nodeNamed: #A) color equals: #blue.
-	self assert: (graph edgeNamed: #A -> #B) color = #yellow
+	self assert: (graph edgeNamed: #A -> #B) color equals: #yellow
 ]
 
 { #category : #testing }
@@ -138,7 +138,7 @@ GraphVizGraphModelTests >> testModelContainsNodes [
 	self assert: graph nodes size equals: 1.
 	self assert: graph nodes first id equals: #A.
 	graph add: #B.
-	self assert: graph nodes size = 2.
+	self assert: graph nodes size equals: 2.
 	self assert: graph nodes second id equals: #B
 ]
 
@@ -159,7 +159,7 @@ GraphVizGraphModelTests >> testModelRecordsOnlyUniqueNodes [
 	self assert: graph nodes size equals: 1.
 	self assert: graph nodes first id equals: #A.
 	newNode := graph add: #A.
-	self assert: graph nodes size = 1.
+	self assert: graph nodes size equals: 1.
 	self assert: newNode equals: (graph nodeNamed: #A)
 ]
 
@@ -169,7 +169,9 @@ GraphVizGraphModelTests >> testModelRecordsOnlyUniqueNodesEvenInSubgraphs [
 	graph subgraphDo: [ graph add: #A ].
 	self assert: graph nodes size equals: 1.
 	self assert: graph subgraphs first nodes size equals: 1.
-	self assert: graph nodes first = graph subgraphs first nodes first
+	self
+		assert: graph nodes first
+		equals: graph subgraphs first nodes first
 ]
 
 { #category : #testing }
@@ -183,7 +185,9 @@ GraphVizGraphModelTests >> testModelWithStyle [
 GraphVizGraphModelTests >> testObjectsHaveAttributes [
 	graph add: #A with: #label -> 'A label'.
 	self assert: graph nodes first attributes size equals: 1.
-	self assert: (graph nodes first attributes at: #label) = 'A label'.
+	self
+		assert: (graph nodes first attributes at: #label)
+		equals: 'A label'.
 	graph
 		add: #B
 		with:
@@ -220,5 +224,5 @@ GraphVizGraphModelTests >> testSubgraphsVsGraphs [
 	self assert: graph subgraphs first isSubgraph.
 	graph subgraphDo: [ graph rank: #same ].
 	self assert: graph attributes isEmpty.
-	self assert: graph subgraphs last attributes size = 1
+	self assert: graph subgraphs last attributes size equals: 1
 ]

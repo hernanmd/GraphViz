@@ -1,3 +1,6 @@
+"
+These are generators for Squeak and older Pharo versions (<= 6)
+"
 Class {
 	#name : #FileBasedGraphVizGenerator,
 	#superclass : #GraphVizGenerator,
@@ -5,7 +8,7 @@ Class {
 		'durationToWaitForGenerating',
 		'deleteIntermediateFiles'
 	],
-	#category : #'GraphViz-Generators'
+	#category : #'GraphViz-Generators-FileBased'
 }
 
 { #category : #accessing }

@@ -1,7 +1,21 @@
+"
+GraphViz wrapper using ProcessWrapper and OSProcess
+
+- message one   
+- message two 
+- (for bonus points) how to create instances.
+
+   One simple example is simply gorgeous.
+ 
+Internal Representation and Key Implementation Points.
+
+
+    Implementation Points
+"
 Class {
 	#name : #Win32GraphVizGenerator,
 	#superclass : #FileBasedGraphVizGenerator,
-	#category : #'GraphViz-Generators'
+	#category : #'GraphViz-Generators-FileBased'
 }
 
 { #category : #external }

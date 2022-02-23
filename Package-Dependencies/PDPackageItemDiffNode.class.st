@@ -3,7 +3,7 @@ A PDPackageNode is used to display a package diff in a tree.
 "
 Class {
 	#name : #PDPackageItemDiffNode,
-	#superclass : #TreeNodeModel,
+	#superclass : #TreeNodePresenter,
 	#category : #'Package-Dependencies-Diff'
 }
 

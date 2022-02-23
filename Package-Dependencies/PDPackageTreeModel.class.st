@@ -134,18 +134,17 @@ PDPackageTreeModel >> initializePresenter [
 PDPackageTreeModel >> initializeWidgets [
 	tree := self newTree
 		multiSelection: true;
-		on: $b command do: [ self selectedItemFromTree browseInOtherNautilus ];
+		on: $b command
+			do: [ self selectedItemFromTree browseInOtherNautilus ];
 		yourself.
-
 	extensionCheckBox := self newCheckBox.
 	extensionCheckBox label: 'Show extension dependencies'.
-	
 	buttonRefresh := self newButton
-		icon: (Smalltalk ui icons iconNamed: #refreshIcon);
+		icon:
+			(self iconNamed: #refreshIcon);
 		help: 'Refresh the TreeModel';
 		label: 'Refresh'.
-	
-	packageTreeNautilus := Nautilus new
+	packageTreeNautilus := Smalltalk tools browser
 ]
 
 { #category : #testing }
