@@ -137,7 +137,7 @@ BaselineOfGraphViz >> baselinePharo: spec [
 			package: 'GraphViz'	with: [ spec includes: #('GraphViz-Generators-OSProcess') ];
 			group: 'Basic' 			with: #('GraphViz')  ].
 
-	spec for: #(#'pharo8.x' #'pharo9.x' #'pharo10.x') do: [ 
+	spec for: #(#'pharo8.x' #'pharo9.x' #'pharo10.x' #'pharo11.x' #'pharo12.x') do: [ 
 		self specForXMLParserPharo8: spec.
 		spec 
 			group: 'Basic' 
