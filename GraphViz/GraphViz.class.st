@@ -8,8 +8,8 @@ GraphViz Color Names: http://www.graphviz.org/doc/info/colors.html
 
 "
 Class {
-	#name : #GraphViz,
-	#superclass : #GraphVizGraph,
+	#name : 'GraphViz',
+	#superclass : 'GraphVizGraph',
 	#instVars : [
 		'generator',
 		'generatorClass',
@@ -18,10 +18,12 @@ Class {
 	#classInstVars : [
 		'colorsByName'
 	],
-	#category : #'GraphViz-Model'
+	#category : 'GraphViz-Model',
+	#package : 'GraphViz',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphViz class >> colors [
 
 	| colorList |
@@ -691,23 +693,13 @@ yellowgreen;#9acd32'.
 	colorsByName]
 ]
 
-{ #category : #examples }
-GraphViz class >> hierarchyForClassesInCategoriesMatching: symbol [
-	" GraphViz hierarchyForClassesInCategoriesMatching: 'GraphViz' "
-	" GraphViz hierarchyForClassesInCategoriesMatching: 'System-Archives' "
-	" GraphViz hierarchyForClassesInCategoriesMatching: 'Collections-Weak' "
-	" GraphViz hierarchyForClassesInCategoriesMatching: #DynamicBindings "	
-
-	(SystemOrganization graphForCategoriesMatching: symbol) openInWindow
-]
-
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 GraphViz class >> initialize [
 
 	colorsByName := nil
 ]
 
-{ #category : #'output types' }
+{ #category : 'output types' }
 GraphViz class >> outputFormats [
 	"All the output formats listed in GraphViz documentation (as of dot version 2.2)."
 
@@ -740,13 +732,13 @@ GraphViz class >> outputFormats [
 		#wbmp	"Wireless BitMap format")
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphViz class >> pointsPerInch [
 
 	^ 72
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 GraphViz class >> usersOf: aSymbol [
 	" GraphViz usersOf: #WeakRegistry "
 	" GraphViz usersOf: #Bag "
@@ -785,7 +777,7 @@ GraphViz class >> usersOf: aSymbol [
 		openInWindow
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 GraphViz class >> usersOf: aSymbol nodeShape: nodeShapeSymbol [
 	
 	| graph  |
@@ -822,7 +814,7 @@ GraphViz class >> usersOf: aSymbol nodeShape: nodeShapeSymbol [
 		openInWindow
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphViz >> addLabel: aString fillColor: colorSymbol [
 
 	^ self 
@@ -833,7 +825,7 @@ GraphViz >> addLabel: aString fillColor: colorSymbol [
 			#label -> aString }
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 GraphViz >> asLayoutCoordinates [
 	"Create graph layout cooordinates in a format that could be easily parsed in Squeak."
 
@@ -847,25 +839,25 @@ GraphViz >> asLayoutCoordinates [
 
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 GraphViz >> asMorph [
 
 	^ self generator createMorph
 ]
 
-{ #category : #generating }
+{ #category : 'generating' }
 GraphViz >> asOutputType: outputFormat [
 
 	^ self generator generateType: outputFormat
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 GraphViz >> asXml [
 
 	^ self generator createXMLDocument
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 GraphViz >> doLayout [
 
 	| layout graphHeight graphWidth |
@@ -881,7 +873,7 @@ GraphViz >> doLayout [
 	self layoutEdges: (layout select: [:each | each first = #edge]).
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphViz >> dot [
 
 	^ String streamContents:
@@ -889,32 +881,32 @@ GraphViz >> dot [
 		self writeOn: stream withIndent: 0 for: self]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphViz >> extent [
 
 	"only has a value after calling doLayout"
 	^ extent
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphViz >> generator [
 
 	^ generator ifNil: [generator := self generatorClass newFor: self]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphViz >> generatorClass [
 
 	^ generatorClass ifNil: [generatorClass := self class defaultGeneratorClass]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphViz >> generatorClass: aClass [
 
 	generatorClass := aClass
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 GraphViz >> layoutEdges: edgeList [
 	
 	"format => edge tail head n x1 y1 .. xn yn [label xl yl] style color"
@@ -941,7 +933,7 @@ GraphViz >> layoutEdges: edgeList [
 				edge color: (each at: positionOfStyle + 1)]]
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 GraphViz >> layoutNodes: nodeList [
 	
 	"format => node name x y width height label style shape color fillcolor"
@@ -966,13 +958,13 @@ GraphViz >> layoutNodes: nodeList [
 			node fillcolor: (each at: 11)]]
 ]
 
-{ #category : #generating }
+{ #category : 'generating' }
 GraphViz >> make: outputFormat [
 
 	^ self generator make: outputFormat
 ]
 
-{ #category : #generating }
+{ #category : 'generating' }
 GraphViz >> makeAll [
 	"Generate output files in all known formats."
 
@@ -980,19 +972,19 @@ GraphViz >> makeAll [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphViz >> name [
 
 	^ (self id ifNil: [#UnamedGraph]) asString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphViz >> name: aString [
 
 	self id: aString
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 GraphViz >> openInWindow [
 
 	| morph window scrollPane |
@@ -1014,13 +1006,13 @@ GraphViz >> openInWindow [
 	^ window	
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 GraphViz >> openInteractive [
 
 	self displayCostume openInWorld
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 GraphViz >> tokenizeLine: line [
 
 	| tokens tokenSoFar insideQuote |

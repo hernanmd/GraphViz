@@ -1,1 +1,1 @@
-Package { #name : #'GraphViz-Generators' }
+Package { #name : 'GraphViz-Generators' }

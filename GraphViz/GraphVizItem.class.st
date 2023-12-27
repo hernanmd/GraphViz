@@ -1,73 +1,75 @@
 Class {
-	#name : #GraphVizItem,
-	#superclass : #Object,
+	#name : 'GraphVizItem',
+	#superclass : 'Object',
 	#instVars : [
 		'id'
 	],
-	#category : #'GraphViz-Model'
+	#category : 'GraphViz-Model',
+	#package : 'GraphViz',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizItem >> id [
 
 	^ id
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizItem >> id: anObject [
 
 	id := anObject
 ]
 
-{ #category : #streaming }
+{ #category : 'streaming' }
 GraphVizItem >> indent: aNumber on: stream [
 
 	aNumber timesRepeat: [stream tab]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GraphVizItem >> isAttribute [
 
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GraphVizItem >> isEdge [
 
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GraphVizItem >> isGraph [
 
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GraphVizItem >> isNode [
 
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GraphVizItem >> isStyle [
 
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GraphVizItem >> isSubgraph [
 
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizItem >> nodeType [
 
 	self subclassResponsibility
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 GraphVizItem >> printOn: aStream [
 
 	aStream 
@@ -76,13 +78,13 @@ GraphVizItem >> printOn: aStream [
 		nextPutAll: self id asString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizItem >> safeId [
 
 	^ self safeIdFor: self id
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizItem >> safeIdFor: anObject [
 
 	| hasWhiteSpace firstCharIsDigit |
@@ -102,7 +104,7 @@ GraphVizItem >> safeIdFor: anObject [
 	^ anObject asString
 ]
 
-{ #category : #streaming }
+{ #category : 'streaming' }
 GraphVizItem >> writeAttribute: attribute value: value on: stream [
 
 	stream
@@ -111,20 +113,20 @@ GraphVizItem >> writeAttribute: attribute value: value on: stream [
 		nextPutAll: (self safeIdFor: value)
 ]
 
-{ #category : #streaming }
+{ #category : 'streaming' }
 GraphVizItem >> writeContentsOn: stream withIndent: aNumber for: graph [
 
 	self subclassResponsibility
 ]
 
-{ #category : #streaming }
+{ #category : 'streaming' }
 GraphVizItem >> writeHeaderOn: stream withIndent: aNumber [
 
 	stream cr.
 	self indent: aNumber on: stream.
 ]
 
-{ #category : #streaming }
+{ #category : 'streaming' }
 GraphVizItem >> writeOn: stream withIndent: aNumber for: graph [
 
 	self writeHeaderOn: stream withIndent: aNumber.
@@ -134,7 +136,7 @@ GraphVizItem >> writeOn: stream withIndent: aNumber for: graph [
 	self writeTerminatorOn: stream withIndent: aNumber
 ]
 
-{ #category : #streaming }
+{ #category : 'streaming' }
 GraphVizItem >> writeTerminatorOn: stream withIndent: aNumber [
 
 	stream nextPut: $;

@@ -1,34 +1,36 @@
 Class {
-	#name : #GraphVizStyle,
-	#superclass : #GraphVizNode,
-	#category : #'GraphViz-Model'
+	#name : 'GraphVizStyle',
+	#superclass : 'GraphVizNode',
+	#category : 'GraphViz-Model',
+	#package : 'GraphViz',
+	#tag : 'Model'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GraphVizStyle class >> styleNodes [
 
 	^ #(graph node edge) 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizStyle >> attributes [
 
 	^ attributes
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GraphVizStyle >> isNode [
 
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GraphVizStyle >> isStyle [
 
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizStyle >> nodeType [
 
 	^ #style

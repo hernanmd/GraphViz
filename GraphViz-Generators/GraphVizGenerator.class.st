@@ -1,15 +1,16 @@
 Class {
-	#name : #GraphVizGenerator,
-	#superclass : #Object,
+	#name : 'GraphVizGenerator',
+	#superclass : 'Object',
 	#instVars : [
 		'outputPath',
 		'graph',
 		'preferredProgram'
 	],
-	#category : #'GraphViz-Generators'
+	#category : 'GraphViz-Generators',
+	#package : 'GraphViz-Generators'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GraphVizGenerator class >> newFor: aGraphViz [
 
 	| generator |
@@ -18,34 +19,34 @@ GraphVizGenerator class >> newFor: aGraphViz [
 	^ generator
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizGenerator >> baseFileName [
 	" Answer a <String> suitable for file naming (removed file system invalid characters) "
 	
 	^ self graph name select: [ : each | each isValidFilenameCharacter ]
 ]
 
-{ #category : #creation }
+{ #category : 'creation' }
 GraphVizGenerator >> createMorph [
 
 	"builds and returns a morph"
 	self subclassResponsibility
 ]
 
-{ #category : #creation }
+{ #category : 'creation' }
 GraphVizGenerator >> createXMLDocument [
 
 	"builds and returns an XMLDocument"
 	self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizGenerator >> dotExtension [
 
 	^ '.txt'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizGenerator >> dotFileName [
 	" Answer a <String> representing the .dot file name to be used "
 
@@ -55,13 +56,13 @@ GraphVizGenerator >> dotFileName [
 				nextPutAll: self dotExtension ]
 ]
 
-{ #category : #generating }
+{ #category : 'generating' }
 GraphVizGenerator >> evaluateUsing: externalProgram forType: outputFormat [
 
 	self subclassResponsibility
 ]
 
-{ #category : #generating }
+{ #category : 'generating' }
 GraphVizGenerator >> generateType: outputTypeString [
 	"Run dot and produce a string with the requested output type. See the
 	documentation for dot for a list of supported output types."
@@ -69,19 +70,19 @@ GraphVizGenerator >> generateType: outputTypeString [
 	^ self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizGenerator >> graph [
 
 	^ graph
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizGenerator >> graph: aGraphViz [
 
 	graph := aGraphViz
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizGenerator >> htmlSvgStringFor: svgFile [
 
 	^ String streamContents: [ : stream |
@@ -94,7 +95,7 @@ GraphVizGenerator >> htmlSvgStringFor: svgFile [
 	
 ]
 
-{ #category : #generating }
+{ #category : 'generating' }
 GraphVizGenerator >> make: outputFormat [
 
 	"makes the requested output format on disk and returns full filename to output file 
@@ -103,7 +104,7 @@ GraphVizGenerator >> make: outputFormat [
 	self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizGenerator >> outputFileDirectory [
 
 	| fileRef |
@@ -113,14 +114,14 @@ GraphVizGenerator >> outputFileDirectory [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizGenerator >> outputFileNameFor: extension [
 	" Answer a <String> with receiver's output graph path "
 
 	^ (self outputFileDirectory / (self baseFileName, '.', extension)) fullName 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizGenerator >> outputPath [
 	" Answer a <String> specifying the current output path "
 
@@ -129,33 +130,33 @@ GraphVizGenerator >> outputPath [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizGenerator >> outputPath: aString [
 	" Set aString specifying the current output path "
 
 	outputPath := aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizGenerator >> preferredProgram [
 
 	^ preferredProgram ifNil: [self graph isDirected ifTrue: ['dot'] ifFalse: ['neato']]
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizGenerator >> preferredProgram: aSymbol [
 
 	preferredProgram := aSymbol
 ]
 
-{ #category : #generating }
+{ #category : 'generating' }
 GraphVizGenerator >> writeDotFile [
 
 	self writeDotFileNamed: self dotFileName
 ]
 
-{ #category : #generating }
+{ #category : 'generating' }
 GraphVizGenerator >> writeDotFileNamed: aString [
 
 	| fileName file |
@@ -166,7 +167,7 @@ GraphVizGenerator >> writeDotFileNamed: aString [
 	[file nextPutAll: self graph dot] ensure: [file close]
 ]
 
-{ #category : #generating }
+{ #category : 'generating' }
 GraphVizGenerator >> writeHtmlSvgFor: svgFile [
 
 	| fileName html |

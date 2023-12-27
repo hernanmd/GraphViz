@@ -1,38 +1,40 @@
 Class {
-	#name : #GraphVizAttributableItem,
-	#superclass : #GraphVizItem,
+	#name : 'GraphVizAttributableItem',
+	#superclass : 'GraphVizItem',
 	#instVars : [
 		'attributes',
 		'inheritedStyle'
 	],
-	#category : #'GraphViz-Model'
+	#category : 'GraphViz-Model',
+	#package : 'GraphViz',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizAttributableItem >> attributeAt: symbol [
 
 	^ self attributes at: symbol
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizAttributableItem >> attributeAt: symbol ifAbsent: aBlock [
 
 	^ self attributes at: symbol ifAbsent: aBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizAttributableItem >> attributeAt: key put: value [
 
 	attributes at: key put: value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizAttributableItem >> attributes [
 
 	^ (Dictionary newFrom: inheritedStyle attributes) addAll: attributes; yourself
 ]
 
-{ #category : #'error handling' }
+{ #category : 'error handling' }
 GraphVizAttributableItem >> doesNotUnderstand: aMessage [
 
 	| argCount |
@@ -43,32 +45,32 @@ GraphVizAttributableItem >> doesNotUnderstand: aMessage [
 	^ super doesNotUnderstand: aMessage
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizAttributableItem >> fontSize [
 
 	^ (self attributeAt: #fontsize ifAbsent: [14]) asNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizAttributableItem >> inheritedStyle: aGraphVizStyle [
 
 	inheritedStyle := aGraphVizStyle
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GraphVizAttributableItem >> initialize [
 
 	attributes := Dictionary new
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 GraphVizAttributableItem >> printOn: stream [
 
 	super printOn: stream.
 	self writeAttributesOn: stream.
 ]
 
-{ #category : #streaming }
+{ #category : 'streaming' }
 GraphVizAttributableItem >> writeAttributesOn: stream [
 	
 	self attributes ifEmpty: [^ self].

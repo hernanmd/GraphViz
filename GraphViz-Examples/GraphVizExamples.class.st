@@ -1,10 +1,11 @@
 Class {
-	#name : #GraphVizExamples,
-	#superclass : #Object,
-	#category : #'GraphViz-Examples'
+	#name : 'GraphVizExamples',
+	#superclass : 'Object',
+	#category : 'GraphViz-Examples',
+	#package : 'GraphViz-Examples'
 }
 
-{ #category : #'*GraphViz-Examples' }
+{ #category : 'private' }
 GraphVizExamples class >> createAllOutputFiles [
 	"Generate all the output formats listed in GraphViz documentation (as of dot version 2.2).
 	Results are files named 'directedGraphSample.*' in the 'dot' folder."
@@ -25,7 +26,7 @@ GraphVizExamples class >> createAllOutputFiles [
 
 ]
 
-{ #category : #'*GraphViz-Examples' }
+{ #category : 'private' }
 GraphVizExamples class >> createAllOutputFormats [
 	"Generate all the output formats listed in GraphViz documentation (as of dot version 2.2)."
 
@@ -47,7 +48,7 @@ GraphVizExamples class >> createAllOutputFormats [
 	^ d
 ]
 
-{ #category : #'*GraphViz-Examples' }
+{ #category : 'private' }
 GraphVizExamples class >> directedGraphSample [
 
 	"GraphViz directedGraphSample"
@@ -75,7 +76,7 @@ GraphVizExamples class >> directedGraphSample [
 		openInWindow
 ]
 
-{ #category : #'*GraphViz-Examples' }
+{ #category : 'examples' }
 GraphVizExamples class >> exampleCreateAllOutputFiles [
 	"
 	Generate all the output formats listed in GraphViz documentation (as of dot version 2.2).
@@ -96,7 +97,7 @@ GraphVizExamples class >> exampleCreateAllOutputFiles [
 
 ]
 
-{ #category : #'*GraphViz-Examples' }
+{ #category : 'examples' }
 GraphVizExamples class >> exampleCreateAllOutputFormats [
 	"Generate all the output formats listed in GraphViz documentation (as of dot version 2.2)."
 
@@ -116,7 +117,7 @@ GraphVizExamples class >> exampleCreateAllOutputFormats [
 	^ d
 ]
 
-{ #category : #'*GraphViz-Examples' }
+{ #category : 'examples' }
 GraphVizExamples class >> exampleDirectedGraph [
 	" 
 	GraphViz exampleDirectedGraph 
@@ -145,7 +146,7 @@ GraphVizExamples class >> exampleDirectedGraph [
 		openInWindow
 ]
 
-{ #category : #'*GraphViz-Examples' }
+{ #category : 'examples' }
 GraphVizExamples class >> exampleHistoryOfSmalltalk [
 
 	| graph |
@@ -194,7 +195,7 @@ GraphVizExamples class >> exampleHistoryOfSmalltalk [
 		openInWindow
 ]
 
-{ #category : #'*GraphViz-Examples' }
+{ #category : 'examples' }
 GraphVizExamples class >> exampleUndirectedGraph [
 	"
 	GraphViz exampleUndirectedGraph 
@@ -220,16 +221,16 @@ GraphVizExamples class >> exampleUndirectedGraph [
 		openInWindow
 ]
 
-{ #category : #'*GraphViz-Examples' }
+{ #category : 'examples' }
 GraphVizExamples class >> exampleUsersOfCollections [
 
 	GraphViz usersOf: #Bag.
-	GraphViz usersOf: #WeakRegistry.
+	GraphViz usersOf: #RunArray.
 
 
 ]
 
-{ #category : #'*GraphViz-Examples' }
+{ #category : 'private' }
 GraphVizExamples class >> historyOfSmalltalk [
 	"GraphViz historyOfSmalltalk"
 
@@ -272,7 +273,7 @@ GraphVizExamples class >> historyOfSmalltalk [
 		openInWindow
 ]
 
-{ #category : #'*GraphViz-Examples' }
+{ #category : 'private' }
 GraphVizExamples class >> makeLayoutCoordinates [
 	"Answer plain text layout coordinates in a format that could be parsed in Squeak."
 
@@ -291,7 +292,7 @@ GraphVizExamples class >> makeLayoutCoordinates [
 
 ]
 
-{ #category : #'*GraphViz-Examples' }
+{ #category : 'private' }
 GraphVizExamples class >> undirectedGraphSample [
 
 	"GraphViz undirectedGraphSample"

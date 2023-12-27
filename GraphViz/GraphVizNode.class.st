@@ -1,37 +1,39 @@
 Class {
-	#name : #GraphVizNode,
-	#superclass : #GraphVizAttributableItem,
+	#name : 'GraphVizNode',
+	#superclass : 'GraphVizAttributableItem',
 	#instVars : [
 		'graph'
 	],
-	#category : #'GraphViz-Model'
+	#category : 'GraphViz-Model',
+	#package : 'GraphViz',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizNode >> graph [
 
 	^ graph
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizNode >> graph: aGraphVizGraph [
 
 	graph := aGraphVizGraph
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GraphVizNode >> isNode [
 
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizNode >> nodeType [
 
 	^ #node
 ]
 
-{ #category : #streaming }
+{ #category : 'streaming' }
 GraphVizNode >> writeContentsOn: stream withIndent: aNumber for: graph [
 
 	stream nextPutAll: self safeId.
@@ -39,7 +41,7 @@ GraphVizNode >> writeContentsOn: stream withIndent: aNumber for: graph [
 	self writeAttributesOn: stream.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizNode >> x [
 
 	| pos |
@@ -47,7 +49,7 @@ GraphVizNode >> x [
 	^ (pos findTokens: ',') first asNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizNode >> y [
 
 	| pos |

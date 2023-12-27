@@ -1,10 +1,11 @@
 Class {
-	#name : #OSSubprocessGVGenerator,
-	#superclass : #GraphVizGenerator,
-	#category : #'GraphViz-Generators'
+	#name : 'OSSubprocessGVGenerator',
+	#superclass : 'GraphVizGenerator',
+	#category : 'GraphViz-Generators',
+	#package : 'GraphViz-Generators'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 OSSubprocessGVGenerator >> buildType: aString [ 
 
 	^ String streamContents: [ : stream |
@@ -13,7 +14,7 @@ OSSubprocessGVGenerator >> buildType: aString [
 				nextPutAll: aString ]
 ]
 
-{ #category : #generating }
+{ #category : 'generating' }
 OSSubprocessGVGenerator >> commandLineForFormat: outputFormat [
 
 	| file |
@@ -28,14 +29,16 @@ OSSubprocessGVGenerator >> commandLineForFormat: outputFormat [
 			nextPutAll: file ]
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 OSSubprocessGVGenerator >> createMorph [
 	"builds and returns a morph"
 
-	^ (PNGReadWriter formFromStream: (self generateType: #png) asByteArray readStream) asMorph
+	^ [ (PNGReadWriter formFromStream: (self generateType: #png) asByteArray readStream) asMorph ]
+	on: MessageNotUnderstood, UnrecognizedImageFormatError
+	do: [ : ex | ex retry ]
 ]
 
-{ #category : #creation }
+{ #category : 'creation' }
 OSSubprocessGVGenerator >> createXMLDocument [
 	"builds and returns an XMLDocument"
 	"Warning: Some versions of the dot2gxl program do not correctly flush 
@@ -46,14 +49,14 @@ OSSubprocessGVGenerator >> createXMLDocument [
 	^ XMLDOMParser parse: (self evaluateUsing: 'dot2gxl' forGxl: #dot) readStream
 ]
 
-{ #category : #generating }
+{ #category : 'generating' }
 OSSubprocessGVGenerator >> dotSourceWithLineFeedTerminators [
 	"The external programs expect <lf> line terminators on Unix systems"
 
 	^ self graph dot copyReplaceAll: String cr with: String lf
 ]
 
-{ #category : #generating }
+{ #category : 'generating' }
 OSSubprocessGVGenerator >> evaluateUsing: externalProgram arguments: args [
 	" Run external program (i.e. dot, neato, fdp, twopi) and produce the requested output type.
 	See the documentation for dot for a list of supported output types. No external files are produced. Answer the result output String ."
@@ -84,7 +87,7 @@ OSSubprocessGVGenerator >> evaluateUsing: externalProgram arguments: args [
 	^ actualStdout 
 ]
 
-{ #category : #generating }
+{ #category : 'generating' }
 OSSubprocessGVGenerator >> evaluateUsing: externalProgram forGxl: outputFormat [
 	" Run external program (i.e. dot, neato, fdp, twopi) and produce the requested output type.
 	See the documentation for dot for a list of supported output types. No external files are produced. Answer the result output String ."
@@ -92,7 +95,7 @@ OSSubprocessGVGenerator >> evaluateUsing: externalProgram forGxl: outputFormat [
 	^ self evaluateUsing: externalProgram arguments: { '-g' }.
 ]
 
-{ #category : #generating }
+{ #category : 'generating' }
 OSSubprocessGVGenerator >> evaluateUsing: externalProgram forType: outputFormat [
 	" Run external program (i.e. dot, neato, fdp, twopi) and produce the requested output type.
 	See the documentation for dot for a list of supported output types. No external files are produced. Answer the result output String ."
@@ -100,7 +103,7 @@ OSSubprocessGVGenerator >> evaluateUsing: externalProgram forType: outputFormat 
 	^ self evaluateUsing: externalProgram arguments: { self buildType: outputFormat }
 ]
 
-{ #category : #generating }
+{ #category : 'generating' }
 OSSubprocessGVGenerator >> generateType: outputTypeString [
 	" Run dot and produce the requested output type. See the documentation for dot for a list of supported output types. No external files are produced."
 
@@ -111,7 +114,7 @@ OSSubprocessGVGenerator >> generateType: outputTypeString [
 
 ]
 
-{ #category : #generating }
+{ #category : 'generating' }
 OSSubprocessGVGenerator >> make: outputFormat [
 	"makes the requested output format on disk and returns full filename to output file 
 	e.g. write a SVG output file and returns full path to the output file"
@@ -125,7 +128,7 @@ OSSubprocessGVGenerator >> make: outputFormat [
 
 ]
 
-{ #category : #generating }
+{ #category : 'generating' }
 OSSubprocessGVGenerator >> makeNoWait: outputFormat [
 
 	self writeDotFile.
@@ -133,7 +136,7 @@ OSSubprocessGVGenerator >> makeNoWait: outputFormat [
 	self evaluateUsing: self preferredProgram forType: outputFormat.
 ]
 
-{ #category : #generating }
+{ #category : 'generating' }
 OSSubprocessGVGenerator >> outputCommandLineFileNameFor: extension [
 
 	^ String streamContents: [ : stream | 
@@ -145,7 +148,7 @@ OSSubprocessGVGenerator >> outputCommandLineFileNameFor: extension [
 
 ]
 
-{ #category : #generating }
+{ #category : 'generating' }
 OSSubprocessGVGenerator >> outputPathForCommandLine [
 
 	| path |
@@ -156,7 +159,7 @@ OSSubprocessGVGenerator >> outputPathForCommandLine [
 
 ]
 
-{ #category : #generating }
+{ #category : 'generating' }
 OSSubprocessGVGenerator >> subprocessClass [
 
 	^ OSPlatform current isWindows
@@ -164,7 +167,7 @@ OSSubprocessGVGenerator >> subprocessClass [
 		ifFalse: [ self class environment at: #OSSUnixSubprocess ]
 ]
 
-{ #category : #generating }
+{ #category : 'generating' }
 OSSubprocessGVGenerator >> writeDotFileNamed: aString [
 
 	| fileName |

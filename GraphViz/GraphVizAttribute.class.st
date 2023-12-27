@@ -1,34 +1,36 @@
 Class {
-	#name : #GraphVizAttribute,
-	#superclass : #GraphVizItem,
-	#category : #'GraphViz-Model'
+	#name : 'GraphVizAttribute',
+	#superclass : 'GraphVizItem',
+	#category : 'GraphViz-Model',
+	#package : 'GraphViz',
+	#tag : 'Model'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 GraphVizAttribute >> isAttribute [
 
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizAttribute >> key [
 
 	^ self id key
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizAttribute >> nodeType [
 
 	^ #attribute "should not be used by anyone, but this rounds out the need to implement this subclass responsibility"
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizAttribute >> value [
 
 	^ self id value
 ]
 
-{ #category : #streaming }
+{ #category : 'streaming' }
 GraphVizAttribute >> writeContentsOn: stream withIndent: aNumber for: graph [
 
 	self writeAttribute: self key value: self value on: stream

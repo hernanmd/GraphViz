@@ -1,14 +1,16 @@
 Class {
-	#name : #GraphVizEdge,
-	#superclass : #GraphVizAttributableItem,
+	#name : 'GraphVizEdge',
+	#superclass : 'GraphVizAttributableItem',
 	#instVars : [
 		'fromNode',
 		'toNode'
 	],
-	#category : #'GraphViz-Model'
+	#category : 'GraphViz-Model',
+	#package : 'GraphViz',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizEdge >> arrowhead [
 
 	^ self attributes at: #arrowhead ifAbsent:
@@ -18,7 +20,7 @@ GraphVizEdge >> arrowhead [
 			otherwise: [#none]]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizEdge >> arrowtail [
 
 	^ self attributes at: #arrowtail ifAbsent:
@@ -28,49 +30,49 @@ GraphVizEdge >> arrowtail [
 			otherwise: [#none]]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizEdge >> dir [
 
 	^ self attributes at: #dir ifAbsent: [fromNode graph isDirected ifTrue: [#forward] ifFalse: [#none]]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizEdge >> fromNode [
 
 	^ fromNode
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizEdge >> fromNode: aGraphVizNode [
 
 	fromNode := aGraphVizNode
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GraphVizEdge >> isEdge [
 
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizEdge >> nodeType [
 
 	^ #edge
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizEdge >> toNode [
 
 	^ toNode
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizEdge >> toNode: aGraphVizNode [
 
 	toNode := aGraphVizNode
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizEdge >> vertices [
 
 	| pos |
@@ -82,7 +84,7 @@ GraphVizEdge >> vertices [
 		point first asNumber @ point second asNumber]
 ]
 
-{ #category : #streaming }
+{ #category : 'streaming' }
 GraphVizEdge >> writeContentsOn: stream withIndent: aNumber for: graph [
 
 	stream nextPutAll: (self safeIdFor: self fromNode id).

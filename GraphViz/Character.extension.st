@@ -1,6 +1,6 @@
-Extension { #name : #Character }
+Extension { #name : 'Character' }
 
-{ #category : #'*GraphViz' }
+{ #category : '*GraphViz' }
 Character >> isValidFilenameCharacter [
 	" Answer <true> if receiver is safely writable as a FileSystem character "
 

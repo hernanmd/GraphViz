@@ -1,13 +1,15 @@
 Class {
-	#name : #GraphVizSubgraph,
-	#superclass : #GraphVizGraph,
+	#name : 'GraphVizSubgraph',
+	#superclass : 'GraphVizGraph',
 	#instVars : [
 		'parent'
 	],
-	#category : #'GraphViz-Model'
+	#category : 'GraphViz-Model',
+	#package : 'GraphViz',
+	#tag : 'Model'
 }
 
-{ #category : #adding }
+{ #category : 'adding' }
 GraphVizSubgraph >> addNewNode: anObject with: associations [
 
 	| node |
@@ -18,31 +20,31 @@ GraphVizSubgraph >> addNewNode: anObject with: associations [
 		ifNotNil: [self addNode: node with: associations]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GraphVizSubgraph >> isSubgraph [
 
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizSubgraph >> nodeType [
 
 	^ #subgraph
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizSubgraph >> parent [
 
 	^ parent
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizSubgraph >> parent: aGraphVizGraph [
 
 	parent := aGraphVizGraph
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizSubgraph >> rootGraph [
 
 	^ parent isSubgraph
@@ -50,7 +52,7 @@ GraphVizSubgraph >> rootGraph [
 		ifFalse: [parent]
 ]
 
-{ #category : #streaming }
+{ #category : 'streaming' }
 GraphVizSubgraph >> writeHeaderOn: stream withIndent: aNumber [
 
 		stream cr.

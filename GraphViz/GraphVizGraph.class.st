@@ -1,6 +1,6 @@
 Class {
-	#name : #GraphVizGraph,
-	#superclass : #GraphVizItem,
+	#name : 'GraphVizGraph',
+	#superclass : 'GraphVizItem',
 	#instVars : [
 		'directed',
 		'children',
@@ -11,16 +11,18 @@ Class {
 		'currentNodeStyle',
 		'currentEdgeStyle'
 	],
-	#category : #'GraphViz-Model'
+	#category : 'GraphViz-Model',
+	#package : 'GraphViz',
+	#tag : 'Model'
 }
 
-{ #category : #graphing }
+{ #category : 'graphing' }
 GraphVizGraph >> add: anObject [
 
 	^ self add: anObject with: #()
 ]
 
-{ #category : #graphing }
+{ #category : 'graphing' }
 GraphVizGraph >> add: anObject with: associations [
 
 	| newEdges newObject |
@@ -43,25 +45,25 @@ GraphVizGraph >> add: anObject with: associations [
 
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 GraphVizGraph >> addAttribute: association [
 
 	^ self addNewChild: (GraphVizAttribute new id: association)
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GraphVizGraph >> addNewChild: aGraphVizItem [
 
 	^ children add: aGraphVizItem
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 GraphVizGraph >> addNewEdge: anAssocation [
 
 	^ self addNewEdge: anAssocation with: #()
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 GraphVizGraph >> addNewEdge: anAssociation with: associations [
 
 	| edge atts |
@@ -80,13 +82,13 @@ GraphVizGraph >> addNewEdge: anAssociation with: associations [
 	^ self addNewChild: edge
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 GraphVizGraph >> addNewNode: anObject [
 
 	^ self addNewNode: anObject with: #()
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 GraphVizGraph >> addNewNode: anObject with: associations [
 
 	| node |
@@ -99,13 +101,12 @@ GraphVizGraph >> addNewNode: anObject with: associations [
 	^ self addNode: node with: associations
 ]
 
-{ #category : #adding }
-GraphVizGraph >> addNewStyle: anObject with: associations [
+{ #category : 'adding' }
+GraphVizGraph >> addNewStyle: anObject with: anAssociationOrCollectionOfAssociations [
 
-	| atts style |
+	| style |
+
 	(GraphVizStyle styleNodes includes: anObject) ifFalse: [^ self].
-	
-	atts := associations asOrderedCollection.
 	
 	style := GraphVizStyle new id: anObject.
 	
@@ -117,12 +118,12 @@ GraphVizGraph >> addNewStyle: anObject with: associations [
 		[currentEdgeStyle attributes keysAndValuesDo: [:key :value | style attributeAt: key put: value].
 		currentEdgeStyle := style].
 	
-	atts do: [:each | style attributes at: each key put: each value].	
+	(self buildAttributes: anAssociationOrCollectionOfAssociations) do: [:each | style attributes at: each key put: each value ].	
 	
 	^ self addNewChild: style
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 GraphVizGraph >> addNewSubgraph: anObject [
 
 	| subgraph |
@@ -137,32 +138,30 @@ GraphVizGraph >> addNewSubgraph: anObject [
 	^ self addNewChild: subgraph
 ]
 
-{ #category : #private }
-GraphVizGraph >> addNode: aGraphVizNode with: associations [
+{ #category : 'private' }
+GraphVizGraph >> addNode: aGraphVizNode with: anAssociationOrCollectionOfAssociations [
 
-	| atts |
-	atts := associations asOrderedCollection.
-	
-	atts do: [:each | aGraphVizNode attributeAt: each key put: each value].
-	
+	(self buildAttributes: anAssociationOrCollectionOfAssociations) do: [ :each |
+		aGraphVizNode attributeAt: each key put: each value ].
+
 	nodes at: aGraphVizNode id asString put: aGraphVizNode.
 	^ self addNewChild: aGraphVizNode
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 GraphVizGraph >> allEdgesDo: aBlock [
 
 	self edges do: aBlock.
 	self subgraphs do: [:each | each allEdgesDo: aBlock]
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 GraphVizGraph >> allNodesDo: aBlock [
 
 	self allNodesDo: aBlock skippingOver: OrderedCollection new
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GraphVizGraph >> allNodesDo: aBlock skippingOver: nodeList [
 
 	| effectiveNodes |
@@ -173,49 +172,57 @@ GraphVizGraph >> allNodesDo: aBlock skippingOver: nodeList [
 	self subgraphs do: [:each | each allNodesDo: aBlock skippingOver: nodeList]
 ]
 
-{ #category : #graphing }
+{ #category : 'graphing' }
 GraphVizGraph >> at: attribute put: value [
 	
 	currentGraphReceiver addAttribute: attribute -> value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizGraph >> attributes [
 
 	^ children select: [:each | each isAttribute]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizGraph >> beDirected [
 
 	directed := true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizGraph >> beUndirected [
 
 	directed := false
 ]
 
-{ #category : #accessing }
+{ #category : 'as yet unclassified' }
+GraphVizGraph >> buildAttributes: anAssociationOrCollectionOfAssociations [
+
+	^ anAssociationOrCollectionOfAssociations isAssociation
+		ifTrue: [ OrderedCollection with: anAssociationOrCollectionOfAssociations ]
+		ifFalse: [ OrderedCollection withAll: anAssociationOrCollectionOfAssociations ]
+]
+
+{ #category : 'accessing' }
 GraphVizGraph >> currentEdgeStyle: aGraphVizStyle [
 
 	currentEdgeStyle := aGraphVizStyle
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizGraph >> currentNodeStyle: aGraphVizStyle [
 
 	currentNodeStyle := aGraphVizStyle
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizGraph >> directed: aBoolean [
 
 	directed := aBoolean
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GraphVizGraph >> doesNotUnderstand: aMessage [
 
 	| argCount |
@@ -225,7 +232,7 @@ GraphVizGraph >> doesNotUnderstand: aMessage [
 	^ super doesNotUnderstand: aMessage
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizGraph >> edgeNamed: anAssociation [
 
 	| edge |
@@ -240,13 +247,13 @@ GraphVizGraph >> edgeNamed: anAssociation [
 	^ edge
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizGraph >> edges [
 
 	^ children select: [:each | each isEdge]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GraphVizGraph >> flattenNestedAssocations: association [
 
 	 | flattened currentNode associations |
@@ -267,7 +274,7 @@ GraphVizGraph >> flattenNestedAssocations: association [
 	^ associations
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GraphVizGraph >> initialize [
 
 	super initialize.
@@ -280,25 +287,25 @@ GraphVizGraph >> initialize [
 	currentEdgeStyle := GraphVizStyle new.
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GraphVizGraph >> isDirected [
 
 	^ directed
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GraphVizGraph >> isGraph [
 
 	^ true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GraphVizGraph >> isUndirected [
 
 	^ self isDirected not
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizGraph >> nodeNamed: anObject [
 
 	| node nodeId |
@@ -314,19 +321,19 @@ GraphVizGraph >> nodeNamed: anObject [
 	^ node
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizGraph >> nodeType [
 
 	^ #graph
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizGraph >> nodes [
 
 	^ children select: [:each | each isNode]
 ]
 
-{ #category : #convenience }
+{ #category : 'convenience' }
 GraphVizGraph >> rank: aString add: anObject [
 
 	self subgraphDo:
@@ -335,13 +342,13 @@ GraphVizGraph >> rank: aString add: anObject [
 		self add: anObject]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizGraph >> styles [
 
 	^ children select: [:each | each isStyle]
 ]
 
-{ #category : #graphing }
+{ #category : 'graphing' }
 GraphVizGraph >> subgraph: anObject do: aBlock [
 
 	| subgraph |
@@ -351,26 +358,26 @@ GraphVizGraph >> subgraph: anObject do: aBlock [
 	[aBlock value] ensure: [currentGraphReceiver := self]
 ]
 
-{ #category : #graphing }
+{ #category : 'graphing' }
 GraphVizGraph >> subgraphDo: aBlock [
 
 	self subgraph: nil do: aBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GraphVizGraph >> subgraphs [
 
 	^ children select: [:each | each isGraph]
 ]
 
-{ #category : #streaming }
+{ #category : 'streaming' }
 GraphVizGraph >> writeContentsOn: stream withIndent: aNumber for: graph [
 
 	children do: [:each | each writeOn: stream withIndent: aNumber + 1 for: self].
 
 ]
 
-{ #category : #streaming }
+{ #category : 'streaming' }
 GraphVizGraph >> writeHeaderOn: stream withIndent: aNumber [
 
 	directed ifTrue: [ stream nextPutAll: 'di' ].
@@ -382,7 +389,7 @@ GraphVizGraph >> writeHeaderOn: stream withIndent: aNumber [
 	stream nextPutAll: '{'.
 ]
 
-{ #category : #streaming }
+{ #category : 'streaming' }
 GraphVizGraph >> writeTerminatorOn: stream withIndent: aNumber [
 
 	stream cr.

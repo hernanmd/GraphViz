@@ -1,6 +1,6 @@
-Extension { #name : #GraphViz }
+Extension { #name : 'GraphViz' }
 
-{ #category : #'*GraphViz-Generators' }
+{ #category : '*GraphViz-Generators' }
 GraphViz class >> defaultGeneratorClass [
 
 	^ OSSubprocessGVGenerator

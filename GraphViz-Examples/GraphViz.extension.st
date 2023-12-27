@@ -1,6 +1,6 @@
-Extension { #name : #GraphViz }
+Extension { #name : 'GraphViz' }
 
-{ #category : #'*GraphViz-Examples' }
+{ #category : '*GraphViz-Examples' }
 GraphViz class >> referencesToClassesInCategoriesMatching: symbol [
 
 	"  GraphViz referencesToClassesInCategoriesMatching: 'GraphViz'  "
