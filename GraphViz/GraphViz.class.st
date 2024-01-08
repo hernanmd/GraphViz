@@ -881,6 +881,13 @@ GraphViz >> dot [
 		self writeOn: stream withIndent: 0 for: self]
 ]
 
+{ #category : 'generating' }
+GraphViz >> exportToSVG [
+	"Convenience method"
+
+	self make: #svg
+]
+
 { #category : 'accessing' }
 GraphViz >> extent [
 
