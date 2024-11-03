@@ -1,10 +1,11 @@
 Class {
-	#name : #BaselineOfGraphViz,
-	#superclass : #BaselineOf,
-	#category : #BaselineOfGraphViz
+	#name : 'BaselineOfGraphViz',
+	#superclass : 'BaselineOf',
+	#category : 'BaselineOfGraphViz',
+	#package : 'BaselineOfGraphViz'
 }
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfGraphViz >> baseline: spec [
 	<baseline>
 
@@ -17,7 +18,7 @@ BaselineOfGraphViz >> baseline: spec [
 	
 ]
 
-{ #category : #'baseline-groups' }
+{ #category : 'baseline-groups' }
 BaselineOfGraphViz >> baselineAllGroup: spec [
 
 	spec
@@ -30,7 +31,7 @@ BaselineOfGraphViz >> baselineAllGroup: spec [
 			'PackageDependencies')
 ]
 
-{ #category : #'baseline-groups' }
+{ #category : 'baseline-groups' }
 BaselineOfGraphViz >> baselineBasicGroup: spec [
 
 	spec
@@ -40,7 +41,7 @@ BaselineOfGraphViz >> baselineBasicGroup: spec [
 			'GraphViz-Generators')
 ]
 
-{ #category : #'baseline-groups' }
+{ #category : 'baseline-groups' }
 BaselineOfGraphViz >> baselineCoreGroup: spec [
 
 	spec 
@@ -50,7 +51,7 @@ BaselineOfGraphViz >> baselineCoreGroup: spec [
 			'GraphViz-Generators')
 ]
 
-{ #category : #'baseline-groups' }
+{ #category : 'baseline-groups' }
 BaselineOfGraphViz >> baselineExamplesGroup: spec [
 
 	spec
@@ -60,7 +61,7 @@ BaselineOfGraphViz >> baselineExamplesGroup: spec [
 			'GraphViz-Examples')
 ]
 
-{ #category : #'baseline-groups' }
+{ #category : 'baseline-groups' }
 BaselineOfGraphViz >> baselineGraphBuilderGroup: spec [
 
 	spec
@@ -70,7 +71,7 @@ BaselineOfGraphViz >> baselineGraphBuilderGroup: spec [
 			'GraphBuilder')
 ]
 
-{ #category : #'baseline-groups' }
+{ #category : 'baseline-groups' }
 BaselineOfGraphViz >> baselineGroups: spec [
 
 	self baselineCoreGroup: spec.
@@ -83,7 +84,7 @@ BaselineOfGraphViz >> baselineGroups: spec [
 	spec group: 'default'	with: #('Core') 
 ]
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfGraphViz >> baselineOSDeps: spec [
 
 	spec
@@ -103,7 +104,7 @@ BaselineOfGraphViz >> baselineOSDeps: spec [
 				with: [ spec requires: #('OSWinSubprocess') ] ].
 ]
 
-{ #category : #'baseline-groups' }
+{ #category : 'baseline-groups' }
 BaselineOfGraphViz >> baselinePackageDependenciesGroup: spec [
 
 	spec
@@ -113,7 +114,7 @@ BaselineOfGraphViz >> baselinePackageDependenciesGroup: spec [
 			'Package-Dependencies')
 ]
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfGraphViz >> baselinePackages: spec [
 
 	spec 
@@ -128,7 +129,7 @@ BaselineOfGraphViz >> baselinePackages: spec [
 		package: 'Package-Dependencies'	 					with: [ spec requires: #('GraphViz' ) ].
 ]
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfGraphViz >> baselinePharo: spec [
 
 	spec for: #(#'pharo4.x' #'pharo5.x' #'pharo6.x' #'pharo7.x') do: [ 
@@ -137,7 +138,7 @@ BaselineOfGraphViz >> baselinePharo: spec [
 			package: 'GraphViz'	with: [ spec includes: #('GraphViz-Generators-OSProcess') ];
 			group: 'Basic' 			with: #('GraphViz')  ].
 
-	spec for: #(#'pharo8.x' #'pharo9.x' #'pharo10.x' #'pharo11.x' #'pharo12.x') do: [ 
+	spec for: #(#'pharo8.x' #'pharo9.x' #'pharo10.x' #'pharo11.x' #'pharo12.x' #'pharo13.x') do: [ 
 		self specForXMLParserPharo8: spec.
 		spec 
 			group: 'Basic' 
@@ -145,7 +146,7 @@ BaselineOfGraphViz >> baselinePharo: spec [
 
 ]
 
-{ #category : #'baseline-groups' }
+{ #category : 'baseline-groups' }
 BaselineOfGraphViz >> baselineTestsGroup: spec [
 
 	spec
@@ -153,7 +154,7 @@ BaselineOfGraphViz >> baselineTestsGroup: spec [
 		with: #('GraphViz' 'GraphViz-Tests')
 ]
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfGraphViz >> customProjectAttributes [
 
 	OSPlatform current isMacOS ifTrue: [ ^ #(#MacOS) ].
@@ -161,7 +162,7 @@ BaselineOfGraphViz >> customProjectAttributes [
 	OSPlatform current isWindows ifTrue: [ ^ #(#Windows) ]
 ]
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfGraphViz >> specForOSUnixSubprocess: spec [
 
 	spec 
@@ -169,7 +170,7 @@ BaselineOfGraphViz >> specForOSUnixSubprocess: spec [
 		with: [ spec repository: 'github://pharo-contributions/OSSubprocess:master/repository' ]
 ]
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfGraphViz >> specForOSWinSubprocess: spec [
 
 	spec 
@@ -177,7 +178,7 @@ BaselineOfGraphViz >> specForOSWinSubprocess: spec [
 		with: [ spec repository: 'github://pharo-contributions/OSWinSubprocess/src' ]
 ]
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfGraphViz >> specForProcessWrapper: spec [
 	spec 
 		configuration: 'ProcessWrapper' 
@@ -187,7 +188,7 @@ BaselineOfGraphViz >> specForProcessWrapper: spec [
 				repository: 'http://smalltalkhub.com/mc/Pharo/MetaRepoForPharo60/main' ]
 ]
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfGraphViz >> specForXMLParserPharo7: spec [		
 		
 	spec
@@ -199,7 +200,7 @@ BaselineOfGraphViz >> specForXMLParserPharo7: spec [
 				repository: 'http://smalltalkhub.com/mc/PharoExtras/XMLParser/main/' ]
 ]
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfGraphViz >> specForXMLParserPharo8: spec [		
 		
 	spec

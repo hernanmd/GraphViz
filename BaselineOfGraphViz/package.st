@@ -1,1 +1,1 @@
-Package { #name : #BaselineOfGraphViz }
+Package { #name : 'BaselineOfGraphViz' }
